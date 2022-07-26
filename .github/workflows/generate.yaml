@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '5 4 * * sun'
 
+env:
+  SWAGGER_URL: ./.github/workflows/assets/swagger.json
+
 jobs:
   build:
 
@@ -28,7 +31,7 @@ jobs:
 
         echo debug: build the client to ${output_dir}
         java  -jar swagger-codegen-cli.jar generate \
-              -i https://petstore.swagger.io/v2/swagger.json \
+              -i {{ env.SWAGGER_URL }} \
               -l php \
               -o ${output_dir}
 
