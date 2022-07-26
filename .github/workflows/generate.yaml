@@ -14,7 +14,7 @@ jobs:
 
     - run: |
         output_dir=$(mktemp -d)
-        gen_dir=${output_dir}/${SwaggerClient-php}
+        gen_dir=${output_dir}/SwaggerClient-php
         curl -o swagger-codegen-cli.jar https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.34/swagger-codegen-cli-3.0.34.jar
         java  -jar swagger-codegen-cli.jar generate \
               -i https://petstore.swagger.io/v2/swagger.json \
