@@ -31,7 +31,7 @@ jobs:
 
         echo debug: build the client to ${output_dir}
         java  -jar swagger-codegen-cli.jar generate \
-              -i {{ env.SWAGGER_URL }} \
+              -i ${{ env.SWAGGER_URL }} \
               -l php \
               -o ${output_dir}
 
