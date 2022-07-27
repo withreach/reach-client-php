@@ -33,6 +33,8 @@ jobs:
         java  -jar swagger-codegen-cli.jar generate \
               -i ${{ env.SWAGGER_URL }} \
               -l php \
+              --git-user-id withreach \
+              --git-repo-id reach-client-php \
               -o ${output_dir}
 
         echo dubug: convert the output directory to our github repo
