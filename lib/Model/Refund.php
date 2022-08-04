@@ -13,7 +13,7 @@
 /**
  * Reach's Drop-In API
  *
- * API definition for Reach's Drop-In API's
+ * API definition for Reach's Drop-In API's. This version of the OpenAPI is intended for use with code generation tools.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -60,7 +60,7 @@ class Refund implements ModelInterface, ArrayAccess
 'amount' => 'float',
 'state' => 'string',
 'refund_reference' => 'string',
-'times' => 'AllOfRefundTimes'    ];
+'times' => '\Swagger\Client\Model\Times'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -351,7 +351,7 @@ self::STATE_FAILED,        ];
     /**
      * Gets times
      *
-     * @return AllOfRefundTimes
+     * @return \Swagger\Client\Model\Times
      */
     public function getTimes()
     {
@@ -361,7 +361,7 @@ self::STATE_FAILED,        ];
     /**
      * Sets times
      *
-     * @param AllOfRefundTimes $times times
+     * @param \Swagger\Client\Model\Times $times times
      *
      * @return $this
      */

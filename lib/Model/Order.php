@@ -13,7 +13,7 @@
 /**
  * Reach's Drop-In API
  *
- * API definition for Reach's Drop-In API's
+ * API definition for Reach's Drop-In API's. This version of the OpenAPI is intended for use with code generation tools.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -60,12 +60,12 @@ class Order implements ModelInterface, ArrayAccess
         'order_id' => 'string',
 'state' => 'string',
 'merchant_reference' => 'string',
-'billing_profile' => 'AllOfOrderBillingProfile',
+'billing_profile' => '\Swagger\Client\Model\BillingProfile',
 'billing_profile_id' => 'string',
 'billing_profile_reference' => 'string',
 'currency' => 'string',
 'items' => '\Swagger\Client\Model\Item[]',
-'payment' => 'AllOfOrderPayment',
+'payment' => '\Swagger\Client\Model\Payment',
 'contract_id' => 'string',
 'device_fingerprint' => 'string',
 'discounts' => '\Swagger\Client\Model\Discount[]',
@@ -80,8 +80,8 @@ class Order implements ModelInterface, ArrayAccess
 'chargeback' => 'bool',
 'reason' => 'string',
 'expiry' => 'string',
-'action' => 'AllOfOrderAction',
-'times' => 'AllOfOrderTimes'    ];
+'action' => '\Swagger\Client\Model\Action',
+'times' => '\Swagger\Client\Model\Times'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -467,7 +467,7 @@ self::STATE_DECLINED,        ];
     /**
      * Gets billing_profile
      *
-     * @return AllOfOrderBillingProfile
+     * @return \Swagger\Client\Model\BillingProfile
      */
     public function getBillingProfile()
     {
@@ -477,7 +477,7 @@ self::STATE_DECLINED,        ];
     /**
      * Sets billing_profile
      *
-     * @param AllOfOrderBillingProfile $billing_profile Full consumer billing information. Supplying this creates a new BillingProfile that can be referenced in future requests with either the supplied BillingProfileReference or the generated BillingProfileId. Exactly one of BillingProfile, BillingProfileId or BillingprofileReference are required.
+     * @param \Swagger\Client\Model\BillingProfile $billing_profile billing_profile
      *
      * @return $this
      */
@@ -587,7 +587,7 @@ self::STATE_DECLINED,        ];
     /**
      * Gets payment
      *
-     * @return AllOfOrderPayment
+     * @return \Swagger\Client\Model\Payment
      */
     public function getPayment()
     {
@@ -597,7 +597,7 @@ self::STATE_DECLINED,        ];
     /**
      * Sets payment
      *
-     * @param AllOfOrderPayment $payment Payment information, such as card or offline data. Required in requests if ContractId is not present.
+     * @param \Swagger\Client\Model\Payment $payment payment
      *
      * @return $this
      */
@@ -947,7 +947,7 @@ self::STATE_DECLINED,        ];
     /**
      * Gets action
      *
-     * @return AllOfOrderAction
+     * @return \Swagger\Client\Model\Action
      */
     public function getAction()
     {
@@ -957,7 +957,7 @@ self::STATE_DECLINED,        ];
     /**
      * Sets action
      *
-     * @param AllOfOrderAction $action action
+     * @param \Swagger\Client\Model\Action $action action
      *
      * @return $this
      */
@@ -971,7 +971,7 @@ self::STATE_DECLINED,        ];
     /**
      * Gets times
      *
-     * @return AllOfOrderTimes
+     * @return \Swagger\Client\Model\Times
      */
     public function getTimes()
     {
@@ -981,7 +981,7 @@ self::STATE_DECLINED,        ];
     /**
      * Sets times
      *
-     * @param AllOfOrderTimes $times times
+     * @param \Swagger\Client\Model\Times $times times
      *
      * @return $this
      */
