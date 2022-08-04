@@ -13,7 +13,7 @@
 /**
  * Reach's Drop-In API
  *
- * API definition for Reach's Drop-In API's
+ * API definition for Reach's Drop-In API's. This version of the OpenAPI is intended for use with code generation tools.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -68,10 +68,10 @@ class Session implements ModelInterface, ArrayAccess
 'via_agent' => 'bool',
 'billing_profile_id' => 'string',
 'billing_profile_reference' => 'string',
-'billing_profile' => 'AllOfSessionBillingProfile',
-'shipping_details' => 'AllOfSessionShippingDetails',
+'billing_profile' => '\Swagger\Client\Model\BillingProfile',
+'shipping_details' => '\Swagger\Client\Model\ShippingDetails',
 'tax_amount' => 'float',
-'order' => 'AllOfSessionOrder',
+'order' => '\Swagger\Client\Model\Order',
 'discounts' => '\Swagger\Client\Model\Discount[]',
 'rate_offer_id' => 'string',
 'meta' => '\Swagger\Client\Model\Meta'    ];
@@ -649,7 +649,7 @@ self::STATE_FAILED,        ];
     /**
      * Gets billing_profile
      *
-     * @return AllOfSessionBillingProfile
+     * @return \Swagger\Client\Model\BillingProfile
      */
     public function getBillingProfile()
     {
@@ -659,7 +659,7 @@ self::STATE_FAILED,        ];
     /**
      * Sets billing_profile
      *
-     * @param AllOfSessionBillingProfile $billing_profile Full consumer billing information. Supplying this creates a new BillingProfile that can be referenced in future requests with either the supplied BillingProfileReference or the generated BillingProfileId. Exactly one of BillingProfile, BillingProfileId or BillingprofileReference are required.
+     * @param \Swagger\Client\Model\BillingProfile $billing_profile billing_profile
      *
      * @return $this
      */
@@ -673,7 +673,7 @@ self::STATE_FAILED,        ];
     /**
      * Gets shipping_details
      *
-     * @return AllOfSessionShippingDetails
+     * @return \Swagger\Client\Model\ShippingDetails
      */
     public function getShippingDetails()
     {
@@ -683,7 +683,7 @@ self::STATE_FAILED,        ];
     /**
      * Sets shipping_details
      *
-     * @param AllOfSessionShippingDetails $shipping_details Consumer shipping information. Required if the session is for physical goods.
+     * @param \Swagger\Client\Model\ShippingDetails $shipping_details shipping_details
      *
      * @return $this
      */
@@ -721,7 +721,7 @@ self::STATE_FAILED,        ];
     /**
      * Gets order
      *
-     * @return AllOfSessionOrder
+     * @return \Swagger\Client\Model\Order
      */
     public function getOrder()
     {
@@ -731,7 +731,7 @@ self::STATE_FAILED,        ];
     /**
      * Sets order
      *
-     * @param AllOfSessionOrder $order Order information, returned when a session is completed.
+     * @param \Swagger\Client\Model\Order $order order
      *
      * @return $this
      */

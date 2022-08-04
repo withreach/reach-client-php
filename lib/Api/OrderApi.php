@@ -12,7 +12,7 @@
 /**
  * Reach's Drop-In API
  *
- * API definition for Reach's Drop-In API's
+ * API definition for Reach's Drop-In API's. This version of the OpenAPI is intended for use with code generation tools.
  *
  * OpenAPI spec version: 1.0.0
  * 

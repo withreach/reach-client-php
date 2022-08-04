@@ -13,7 +13,7 @@
 /**
  * Reach's Drop-In API
  *
- * API definition for Reach's Drop-In API's
+ * API definition for Reach's Drop-In API's. This version of the OpenAPI is intended for use with code generation tools.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -59,9 +59,9 @@ class Payment implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'type' => 'string',
 'method' => 'string',
-'online' => 'AllOfPaymentOnline',
-'card' => 'AllOfPaymentCard',
-'offline' => 'AllOfPaymentOffline'    ];
+'online' => '\Swagger\Client\Model\Online',
+'card' => '\Swagger\Client\Model\Card',
+'offline' => '\Swagger\Client\Model\Offline'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,7 +304,7 @@ self::TYPE_OFFLINE,        ];
     /**
      * Gets online
      *
-     * @return AllOfPaymentOnline
+     * @return \Swagger\Client\Model\Online
      */
     public function getOnline()
     {
@@ -314,7 +314,7 @@ self::TYPE_OFFLINE,        ];
     /**
      * Sets online
      *
-     * @param AllOfPaymentOnline $online Represents online payment methods, such as Paypal or Klarna. Present if Payment.Type is ONLINE, otherwise absent.
+     * @param \Swagger\Client\Model\Online $online online
      *
      * @return $this
      */
@@ -328,7 +328,7 @@ self::TYPE_OFFLINE,        ];
     /**
      * Gets card
      *
-     * @return AllOfPaymentCard
+     * @return \Swagger\Client\Model\Card
      */
     public function getCard()
     {
@@ -338,7 +338,7 @@ self::TYPE_OFFLINE,        ];
     /**
      * Sets card
      *
-     * @param AllOfPaymentCard $card Represents card payment methods, such as Visa or Mastercard. Present if Payment.Type is CARD, otherwise absent.
+     * @param \Swagger\Client\Model\Card $card card
      *
      * @return $this
      */
@@ -352,7 +352,7 @@ self::TYPE_OFFLINE,        ];
     /**
      * Gets offline
      *
-     * @return AllOfPaymentOffline
+     * @return \Swagger\Client\Model\Offline
      */
     public function getOffline()
     {
@@ -362,7 +362,7 @@ self::TYPE_OFFLINE,        ];
     /**
      * Sets offline
      *
-     * @param AllOfPaymentOffline $offline Represents offline payment methods, such as Bank Transfers. Present if Payment.Type is OFFLINE, otherwise absent.
+     * @param \Swagger\Client\Model\Offline $offline offline
      *
      * @return $this
      */

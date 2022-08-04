@@ -13,7 +13,7 @@
 /**
  * Reach's Drop-In API
  *
- * API definition for Reach's Drop-In API's
+ * API definition for Reach's Drop-In API's. This version of the OpenAPI is intended for use with code generation tools.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -61,7 +61,7 @@ class Card implements ModelInterface, ArrayAccess
 'return_url' => 'string',
 'bin' => 'string',
 'last_four' => 'string',
-'expiry' => 'AllOfCardExpiry'    ];
+'expiry' => '\Swagger\Client\Model\Expiry'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -320,7 +320,7 @@ class Card implements ModelInterface, ArrayAccess
     /**
      * Gets expiry
      *
-     * @return AllOfCardExpiry
+     * @return \Swagger\Client\Model\Expiry
      */
     public function getExpiry()
     {
@@ -330,7 +330,7 @@ class Card implements ModelInterface, ArrayAccess
     /**
      * Sets expiry
      *
-     * @param AllOfCardExpiry $expiry expiry
+     * @param \Swagger\Client\Model\Expiry $expiry expiry
      *
      * @return $this
      */
