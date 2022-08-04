@@ -2,7 +2,7 @@
     "openapi": "3.0.1",
     "info": {
       "title": "Reach's Drop-In API",
-      "description": "API definition for Reach's Drop-In API's",
+      "description": "API definition for Reach's Drop-In API's. This version of the OpenAPI is intended for use with code generation tools.",
       "version": "1.0.0"
     },
     "servers": [
@@ -2650,20 +2650,11 @@
               "writeOnly": true
             },
             "BillingProfile": {
-              "description": "Full consumer billing information. Supplying this creates a new BillingProfile that can be referenced in future requests with either the supplied BillingProfileReference or the generated BillingProfileId. Exactly one of BillingProfile, BillingProfileId or BillingprofileReference are required.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/BillingProfile"
-                }
-              ]
+              "$ref": "#/components/schemas/BillingProfile"
             },
             "ShippingDetails": {
               "description": "Consumer shipping information. Required if the session is for physical goods.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ShippingDetails"
-                }
-              ]
+              "$ref": "#/components/schemas/ShippingDetails"
             },
             "TaxAmount": {
               "description": "Taxes for the entire order. Currency is defined by parent object.",
@@ -2672,11 +2663,7 @@
             "Order": {
               "description": "Order information, returned when a session is completed.",
               "readOnly": true,
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Order"
-                }
-              ]
+              "$ref": "#/components/schemas/Order"
             },
             "Discounts": {
               "type": "array",
@@ -2741,11 +2728,7 @@
             },
             "BillingProfile": {
               "description": "Full consumer billing information. Supplying this creates a new BillingProfile that can be referenced in future requests with either the supplied BillingProfileReference or the generated BillingProfileId. Exactly one of BillingProfile, BillingProfileId or BillingprofileReference are required.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/BillingProfile"
-                }
-              ]
+              "$ref": "#/components/schemas/BillingProfile"
             },
             "BillingProfileId": {
               "description": "Corresponds to the BillingProfileId returned in a BillingProfile. Can be passed in to reference an existing billing profile instead of creating a new one. Exactly one of BillingProfile, BillingProfileId or BillingprofileReference are required.",
@@ -2774,11 +2757,7 @@
             },
             "Payment": {
               "description": "Payment information, such as card or offline data. Required in requests if ContractId is not present.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Payment"
-                }
-              ]
+              "$ref": "#/components/schemas/Payment"
             },
             "ContractId": {
               "description": "Reach-generated ID of an existing contract. Can be supplied in lieu of a Payment object. Will be returned in the response if OpenContract is set to true.",
@@ -2852,19 +2831,11 @@
             },
             "Action": {
               "readOnly": true,
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Action"
-                }
-              ]
+              "$ref": "#/components/schemas/Action"
             },
             "Times": {
               "readOnly": true,
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Times"
-                }
-              ]
+              "$ref": "#/components/schemas/Times"
             }
           },
           "required": [
@@ -3100,27 +3071,15 @@
             },
             "Online": {
               "description": "Represents online payment methods, such as Paypal or Klarna. Present if Payment.Type is ONLINE, otherwise absent.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Online"
-                }
-              ]
+              "$ref": "#/components/schemas/Online"
             },
             "Card": {
               "description": "Represents card payment methods, such as Visa or Mastercard. Present if Payment.Type is CARD, otherwise absent.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Card"
-                }
-              ]
+              "$ref": "#/components/schemas/Card"
             },
             "Offline": {
               "description": "Represents offline payment methods, such as Bank Transfers. Present if Payment.Type is OFFLINE, otherwise absent.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Offline"
-                }
-              ]
+              "$ref": "#/components/schemas/Offline"
             }
           }
         },
@@ -3192,11 +3151,7 @@
             },
             "Expiry": {
               "readOnly": true,
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Expiry"
-                }
-              ]
+              "$ref": "#/components/schemas/Expiry"
             }
           }
         },
@@ -3386,11 +3341,7 @@
             },
             "Times": {
               "readOnly": true,
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Times"
-                }
-              ]
+              "$ref": "#/components/schemas/Times"
             }
           }
         },
