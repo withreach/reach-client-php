@@ -2458,8 +2458,24 @@
             }
           },
           "responses": {
-            "204": {
-              "description": "Operation Successful"
+            "200": {
+              "description": "Operation Successful",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Refund"
+                  },
+                  "example": {
+                    "RefundId": "d6ebf380-6dd5-422f-8ae9-e028f9e6da05",
+                    "RefundReference": "YourUniqueReference",
+                    "State": "InProgress",
+                    "Amount": 1.23,
+                    "Times": {
+                      "Created": "2022-08-19T15:22:32.782Z"                    
+                    }
+                  }
+                }
+              }
             },
             "400": {
               "description": "Bad request",
