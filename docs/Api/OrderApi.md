@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createRefund**
-> createRefund($order_id, $body)
+> \Swagger\Client\Model\Refund createRefund($order_id, $body)
 
 Issue a refund against an order
 
@@ -193,7 +193,8 @@ $order_id = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | Order ID to issu
 $body = new \Swagger\Client\Model\Refund(); // \Swagger\Client\Model\Refund | Refund to be issued
 
 try {
-    $apiInstance->createRefund($order_id, $body);
+    $result = $apiInstance->createRefund($order_id, $body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrderApi->createRefund: ', $e->getMessage(), PHP_EOL;
 }
@@ -209,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\Refund**](../Model/Refund.md)
 
 ### Authorization
 

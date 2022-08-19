@@ -126,7 +126,8 @@ $order_id = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | Order ID to issu
 $body = new \Swagger\Client\Model\Refund(); // \Swagger\Client\Model\Refund | Refund to be issued
 
 try {
-    $apiInstance->createRefund($order_id, $body);
+    $result = $apiInstance->createRefund($order_id, $body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrderApi->createRefund: ', $e->getMessage(), PHP_EOL;
 }
