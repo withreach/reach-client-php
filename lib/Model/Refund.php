@@ -172,9 +172,9 @@ class Refund implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const STATE_IN_PROGRESS = 'InProgress';
-const STATE_SUCCEEDED = 'Succeeded';
-const STATE_FAILED = 'Failed';
+    const STATE_IN_PROGRESS = 'IN_PROGRESS';
+const STATE_SUCCEEDED = 'SUCCEEDED';
+const STATE_FAILED = 'FAILED';
 
     /**
      * Gets allowable values of the enum
