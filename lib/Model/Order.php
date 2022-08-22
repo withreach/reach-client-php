@@ -273,14 +273,14 @@ class Order implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const STATE_AUTHENTICATING = 'Authenticating';
-const STATE_PENDING = 'Pending';
-const STATE_PROCESSING = 'Processing';
-const STATE_PAYMENT_AUTHORIZED = 'PaymentAuthorized';
-const STATE_PROCESSED = 'Processed';
-const STATE_PROCESSING_FAILED = 'ProcessingFailed';
-const STATE_CANCELLED = 'Cancelled';
-const STATE_DECLINED = 'Declined';
+    const STATE_AUTHENTICATING = 'AUTHENTICATING';
+const STATE_PENDING = 'PENDING';
+const STATE_PROCESSING = 'PROCESSING';
+const STATE_PAYMENT_AUTHORIZED = 'PAYMENT_AUTHORIZED';
+const STATE_PROCESSED = 'PROCESSED';
+const STATE_PROCESSING_FAILED = 'PROCESSING_FAILED';
+const STATE_CANCELLED = 'CANCELLED';
+const STATE_DECLINED = 'DECLINED';
 
     /**
      * Gets allowable values of the enum
