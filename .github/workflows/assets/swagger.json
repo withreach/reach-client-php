@@ -1714,7 +1714,7 @@
                             "IssuerId": "Knab"
                           }
                         }
-  
+
                       }
                     }
                   },
@@ -1816,7 +1816,7 @@
                           "Type": "CARD",
                           "Method": "VISA",
                           "Card": {
-  
+
                           }
                         },
                         "State": "PaymentAuthorized",
@@ -1902,7 +1902,7 @@
                           "Type": "CARD",
                           "Method": "VISA",
                           "Online": {
-  
+
                           }
                         },
                         "State": "PaymentAuthorized",
@@ -1988,7 +1988,7 @@
                           "Type": "CARD",
                           "Method": "VISA",
                           "Offline": {
-  
+
                           }
                         },
                         "State": "PaymentAuthorized",
@@ -2471,7 +2471,7 @@
                     "State": "InProgress",
                     "Amount": 1.23,
                     "Times": {
-                      "Created": "2022-08-19T15:22:32.782Z"                    
+                      "Created": "2022-08-19T15:22:32.782Z"
                     }
                   }
                 }
@@ -2697,7 +2697,7 @@
             },
             "Meta": {
               "$ref": "#/components/schemas/Meta"
-  
+
             }
           },
           "required": [
@@ -2726,14 +2726,14 @@
               "description": "Order state. See: https://docs.withreach.com/docs/states-and-events",
               "type": "string",
               "enum": [
-                "Authenticating",
-                "Pending",
-                "Processing",
-                "PaymentAuthorized",
-                "Processed",
-                "ProcessingFailed",
-                "Cancelled",
-                "Declined"
+                "AUTHENTICATING",
+                "PENDING",
+                "PROCESSING",
+                "PAYMENT_AUTHORIZED",
+                "PROCESSED",
+                "PROCESSING_FAILED",
+                "CANCELLED",
+                "DECLINED"
               ],
               "readOnly": true
             },
@@ -3345,9 +3345,9 @@
               "description": "Refund state. See: https://docs.withreach.com/docs/states-and-events#refund-states",
               "type": "string",
               "enum": [
-                "InProgress",
-                "Succeeded",
-                "Failed"
+                "IN_PROGRESS",
+                "SUCCEEDED",
+                "FAILED"
               ],
               "readOnly": true
             },
@@ -3375,4 +3375,3 @@
       }
     }
   }
-  
