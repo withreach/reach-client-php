@@ -2729,9 +2729,9 @@
                 "AUTHENTICATING",
                 "PENDING",
                 "PROCESSING",
-                "PAYMENT_AUTHORIZED",
+                "PAYMENTAUTHORIZED",
                 "PROCESSED",
-                "PROCESSING_FAILED",
+                "PROCESSINGFAILED",
                 "CANCELLED",
                 "DECLINED"
               ],
