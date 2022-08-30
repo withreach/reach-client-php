@@ -1,50 +1,56 @@
-# Swagger\Client\SessionApi
+# OpenAPI\Client\SessionApi
 
-All URIs are relative to *https://api.sandbox.withreach.com*
+All URIs are relative to https://api.sandbox.withreach.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelSession**](SessionApi.md#cancelsession) | **DELETE** /v1/session/{SessionId}/cancel | Cancel a non-final Session
-[**createSession**](SessionApi.md#createsession) | **POST** /v1/session | Create a new Session
-[**retrieveSession**](SessionApi.md#retrievesession) | **GET** /v1/session/{SessionId} | Retrieve a Session
-[**updateSession**](SessionApi.md#updatesession) | **PUT** /v1/session/{SessionId} | Update a session.
+[**cancelSession()**](SessionApi.md#cancelSession) | **DELETE** /v1/session/{SessionId}/cancel | Cancel a non-final Session
+[**createSession()**](SessionApi.md#createSession) | **POST** /v1/session | Create a new Session
+[**retrieveSession()**](SessionApi.md#retrieveSession) | **GET** /v1/session/{SessionId} | Retrieve a Session
+[**updateSession()**](SessionApi.md#updateSession) | **PUT** /v1/session/{SessionId} | Update a session.
 
-# **cancelSession**
-> cancelSession($session_id)
+
+## `cancelSession()`
+
+```php
+cancelSession($session_id)
+```
 
 Cancel a non-final Session
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+
 // Configure HTTP basic authorization: basicAuth
-$config = Swagger\Client\Configuration::getDefaultConfiguration()
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Swagger\Client\Api\SessionApi(
+$apiInstance = new OpenAPI\Client\Api\SessionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$session_id = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | Session ID to be cancelled.
+$session_id = f04c2d83-11fa-405b-b6c3-c74559fd8e61; // string | Session ID to be cancelled.
 
 try {
     $apiInstance->cancelSession($session_id);
 } catch (Exception $e) {
     echo 'Exception when calling SessionApi->cancelSession: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **session_id** | [**string**](../Model/.md)| Session ID to be cancelled. |
+ **session_id** | **string**| Session ID to be cancelled. |
 
 ### Return type
 
@@ -56,52 +62,59 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
-# **createSession**
-> \Swagger\Client\Model\Session createSession($body)
+## `createSession()`
+
+```php
+createSession($session): \OpenAPI\Client\Model\Session
+```
 
 Create a new Session
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+
 // Configure HTTP basic authorization: basicAuth
-$config = Swagger\Client\Configuration::getDefaultConfiguration()
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Swagger\Client\Api\SessionApi(
+$apiInstance = new OpenAPI\Client\Api\SessionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\Session(); // \Swagger\Client\Model\Session | Session object that needs to be created.
+$session = {"MerchantReference":"b14e4557-accb-a829-b829-c21234175467","Currency":"CAD","Items":[{"Name":"Item 1","Amount":23,"Quantity":1},{"Name":"Item 2","Amount":10.5,"Quantity":1},{"Name":"Item 3","Amount":5,"Quantity":1}],"BillingProfile":{"Name":"First Last","Email":"email@example.org","Phone":"4031231234","Birthdate":"1999-12-31","Address":{"Street":"123 Street","City":"City","Region":"AB","Country":"CA","Postcode":"X0X0X0"}},"ShippingDetails":{"ShippingAmount":20.51,"DutyAmount":1.11,"Name":"First Last","Email":"email@example.org","Phone":"4031231234","Address":{"Street":"123 Street","City":"City","Region":"AB","Country":"AR","Postcode":"X0X0X0"}},"TaxAmount":1.23,"AutoCapture":true,"CompleteUrl":"https://example.org/return/{SessionId}","CancelUrl":"https://example.org/return/{SessionId}","Discounts":[{"Name":"Discount descriptor","Amount":4.56}]}; // \OpenAPI\Client\Model\Session | Session object that needs to be created.
 
 try {
-    $result = $apiInstance->createSession($body);
+    $result = $apiInstance->createSession($session);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SessionApi->createSession: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\Session**](../Model/Session.md)| Session object that needs to be created. |
+ **session** | [**\OpenAPI\Client\Model\Session**](../Model/Session.md)| Session object that needs to be created. |
 
 ### Return type
 
-[**\Swagger\Client\Model\Session**](../Model/Session.md)
+[**\OpenAPI\Client\Model\Session**](../Model/Session.md)
 
 ### Authorization
 
@@ -109,33 +122,41 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
-# **retrieveSession**
-> \Swagger\Client\Model\Session retrieveSession($session_id)
+## `retrieveSession()`
+
+```php
+retrieveSession($session_id): \OpenAPI\Client\Model\Session
+```
 
 Retrieve a Session
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+
 // Configure HTTP basic authorization: basicAuth
-$config = Swagger\Client\Configuration::getDefaultConfiguration()
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Swagger\Client\Api\SessionApi(
+$apiInstance = new OpenAPI\Client\Api\SessionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$session_id = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | Session ID to be retrieved.
+$session_id = f04c2d83-11fa-405b-b6c3-c74559fd8e61; // string | Session ID to be retrieved.
 
 try {
     $result = $apiInstance->retrieveSession($session_id);
@@ -143,18 +164,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling SessionApi->retrieveSession: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **session_id** | [**string**](../Model/.md)| Session ID to be retrieved. |
+ **session_id** | **string**| Session ID to be retrieved. |
 
 ### Return type
 
-[**\Swagger\Client\Model\Session**](../Model/Session.md)
+[**\OpenAPI\Client\Model\Session**](../Model/Session.md)
 
 ### Authorization
 
@@ -162,54 +182,61 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
-# **updateSession**
-> \Swagger\Client\Model\Session updateSession($body, $session_id)
+## `updateSession()`
+
+```php
+updateSession($session_id, $session): \OpenAPI\Client\Model\Session
+```
 
 Update a session.
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+
 // Configure HTTP basic authorization: basicAuth
-$config = Swagger\Client\Configuration::getDefaultConfiguration()
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Swagger\Client\Api\SessionApi(
+$apiInstance = new OpenAPI\Client\Api\SessionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\Session(); // \Swagger\Client\Model\Session | Session object that needs to be created.
-$session_id = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | Session ID of the session to be updated
+$session_id = f04c2d83-11fa-405b-b6c3-c74559fd8e61; // string | Session ID of the session to be updated
+$session = {"MerchantReference":"b14e4557-accb-a829-b829-c21234175467","Currency":"CAD","Items":[{"Name":"Item 1","Amount":23,"Quantity":1},{"Name":"Item 2","Amount":10.5,"Quantity":1},{"Name":"Item 3","Amount":5,"Quantity":1}],"BillingProfile":{"Name":"First Last","Email":"email@example.org","Phone":"4031231234","Birthdate":"1999-12-31","Address":{"Street":"123 Street","City":"City","Region":"AB","Country":"CA","Postcode":"X0X0X0"}},"ShippingDetails":{"ShippingAmount":20.51,"DutyAmount":1.11,"Name":"First Last","Email":"email@example.org","Phone":"4031231234","Address":{"Street":"123 Street","City":"City","Region":"AB","Country":"AR","Postcode":"X0X0X0"}},"TaxAmount":1.23,"AutoCapture":true,"CompleteUrl":"https://example.org/return/{SessionId}","CancelUrl":"https://example.org/return/{SessionId}","Discounts":[{"Name":"Discount descriptor","Amount":4.56}]}; // \OpenAPI\Client\Model\Session | Session object that needs to be created.
 
 try {
-    $result = $apiInstance->updateSession($body, $session_id);
+    $result = $apiInstance->updateSession($session_id, $session);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SessionApi->updateSession: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\Session**](../Model/Session.md)| Session object that needs to be created. |
- **session_id** | [**string**](../Model/.md)| Session ID of the session to be updated |
+ **session_id** | **string**| Session ID of the session to be updated |
+ **session** | [**\OpenAPI\Client\Model\Session**](../Model/Session.md)| Session object that needs to be created. |
 
 ### Return type
 
-[**\Swagger\Client\Model\Session**](../Model/Session.md)
+[**\OpenAPI\Client\Model\Session**](../Model/Session.md)
 
 ### Authorization
 
@@ -217,8 +244,9 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
