@@ -24,7 +24,6 @@ jobs:
 
         echo debug: setup the paths for autogeneration
         output_dir=$(mktemp -d)
-        gen_dir=${output_dir}/SwaggerClient-php
 
         echo debug: download the swagger app
         curl -o openapi-generator-cli.jar https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.0.1/openapi-generator-cli-6.0.1.jar
@@ -37,9 +36,9 @@ jobs:
               --git-repo-id reach-client-php \
               -o ${output_dir}
 
-        echo dubug: convert the output directory to our github repo
-        cp -r ${PWD}/{.git,.github} ${gen_dir}
-        cd ${gen_dir}
+        echo debug: convert the output directory to our github repo
+        cp -r ${PWD}/{.git,.github} ${output_dir}
+        cd ${output_dir}
         git checkout -b 'github-action'
         git add -A
 
