@@ -27,10 +27,10 @@ jobs:
         gen_dir=${output_dir}/SwaggerClient-php
 
         echo debug: download the swagger app
-        curl -o swagger-codegen-cli.jar https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.34/swagger-codegen-cli-3.0.34.jar
+        curl -o openapi-generator-cli.jar https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.0.1/openapi-generator-cli-6.0.1.jar
 
         echo debug: build the client to ${output_dir}
-        java  -jar swagger-codegen-cli.jar generate \
+        java  -jar openapi-generator-cli.jar generate \
               -i ${{ env.SWAGGER_URL }} \
               -l php \
               --git-user-id withreach \
