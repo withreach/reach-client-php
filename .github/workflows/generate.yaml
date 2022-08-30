@@ -32,7 +32,7 @@ jobs:
         echo debug: build the client to ${output_dir}
         java  -jar openapi-generator-cli.jar generate \
               -i ${{ env.SWAGGER_URL }} \
-              -l php \
+              -g php \
               --git-user-id withreach \
               --git-repo-id reach-client-php \
               -o ${output_dir}
