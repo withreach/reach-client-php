@@ -1282,31 +1282,168 @@
                     "$ref": "#/components/schemas/Order"
                   },
                   "examples": {
-                    "Typical Order": {
+                    "Successful Card Payment": {
                       "value": {
-                        "OrderId": "cc7236aa-d11b-436c-a29c-d26cecadc847",
-                        "State": "Processed",
-                        "MerchantReference": "1234567890",
-                        "SessionId": "f04c2d83-11fa-405b-b6c3-c74559fd8e61"
+                        "SessionId": "c47fd55e-f6ca-43df-b45e-77d757755e27",
+                        "MerchantReference": "SomeReference",
+                        "DeviceFingerprint": "b16f631b-931f-4bfb-adb4-402f94c3e49c",
+                        "Currency": "EUR",
+                        "Items": [
+                          {
+                            "Name": "Item 1",
+                            "Amount": 1,
+                            "Quanitity": 1
+                          },
+                          {
+                            "Name": "Item 2",
+                            "Amount": 2.00,
+                            "Quantity": 2
+                          }
+                        ],
+                        "Discounts": [
+                          {
+                            "Name": "Discount 1",
+                            "Amount:": 3.00
+                          }
+                        ],
+                        "ShippingDetails": {
+                          "ShippingAmount": 4.05,
+                          "DutyAmount": 5.05,
+                          "Name": "Shipping Name",
+                          "Email": "ship@email.com",
+                          "Phone": "1234567890",
+                          "Address": {
+                            "Street": "shipping street",
+                            "City": "shipping city",
+                            "Region": "shipping region",
+                            "Country": "CA",
+                            "Postcode": "H0H0H0"
+                          }
+                        },
+                        "TaxAmount": 6.06,
+                        "BillingProfile": {
+                          "BillingProfileReference": "Profile reference",
+                          "Name": "bill name",
+                          "Email": "bill@email.com",
+                          "Phone": "9876543210",
+                          "Birthdate": "1980-01-02",
+                          "Address": {
+                            "Street": "billstreet",
+                            "City": "billcity",
+                            "Region": "billregion",
+                            "Country": "US",
+                            "Postcode": "90210"
+                          }
+                        },
+                        "Meta": {
+                          "field": "value",
+                          "AnotherField": "Some other value"
+                        },
+                        "Payment": {
+                          "Type": "CARD",
+                          "Method": "VISA",
+                          "Card": {
+
+                          }
+                        },
+                        "State": "PaymentAuthorized",
+                        "OrderId": "211eda17-5e0e-4615-a54d-7b10fb58b694",
+                        "UnderReview": false,
+                        "Chargeback": false,
+                        "Reason": "Some_reason",
+                        "Expiry": "2022-12-13T01:01:01.01Z",
+                        "Action": {
+                          "Redirect": "http://some.redirect",
+                          "Challenge": "http:///some.challenge"
+                        },
+                        "AdminUrl": "https://sandbox.withreach.com/?txn=482c5ca4-2f6e-4e8f-af37-07d106833570"
                       }
                     },
-                    "Completed Bank Transfer": {
+                    "Successful Offline Payment": {
                       "value": {
-                        "OrderId": "cc7236aa-d11b-436c-a29c-d26cecadc847",
-                        "State": "Processed",
-                        "MerchantReference": "1234567890",
-                        "SessionId": "f04c2d83-11fa-405b-b6c3-c74559fd8e61",
-                        "BankDetails": {
-                          "AccountHolder": "Global Collect Services BV",
-                          "AccountNumber": "3004 02118 00010129648 92",
-                          "BankName": "BNP Paribas",
-                          "City": "Paris",
-                          "Country": "France",
-                          "Iban": "FR7630004021180001012964892",
-                          "PaymentReference": "626300095459",
-                          "SwiftCode": "BNPAFRPPXXX",
-                          "ExtraBankData": "extra data"
-                        }
+                        "SessionId": "c47fd55e-f6ca-43df-b45e-77d757755e27",
+                        "MerchantReference": "SomeReference",
+                        "DeviceFingerprint": "b16f631b-931f-4bfb-adb4-402f94c3e49c",
+                        "Currency": "EUR",
+                        "Items": [
+                          {
+                            "Name": "Item 1",
+                            "Amount": 1,
+                            "Quanitity": 1
+                          },
+                          {
+                            "Name": "Item 2",
+                            "Amount": 2.00,
+                            "Quantity": 2
+                          }
+                        ],
+                        "Discounts": [
+                          {
+                            "Name": "Discount 1",
+                            "Amount:": 3.00
+                          }
+                        ],
+                        "ShippingDetails": {
+                          "ShippingAmount": 4.05,
+                          "DutyAmount": 5.05,
+                          "Name": "Shipping Name",
+                          "Email": "ship@email.com",
+                          "Phone": "1234567890",
+                          "Address": {
+                            "Street": "shipping street",
+                            "City": "shipping city",
+                            "Region": "shipping region",
+                            "Country": "CA",
+                            "Postcode": "H0H0H0"
+                          }
+                        },
+                        "TaxAmount": 6.06,
+                        "BillingProfile": {
+                          "BillingProfileReference": "Profile reference",
+                          "Name": "bill name",
+                          "Email": "bill@email.com",
+                          "Phone": "9876543210",
+                          "Birthdate": "1980-01-02",
+                          "Address": {
+                            "Street": "billstreet",
+                            "City": "billcity",
+                            "Region": "billregion",
+                            "Country": "US",
+                            "Postcode": "90210"
+                          }
+                        },
+                        "Meta": {
+                          "field": "value",
+                          "AnotherField": "Some other value"
+                        },
+                        "Payment": {
+                          "Type": "CARD",
+                          "Method": "VISA",
+                          "Offline": {
+
+                          }
+                        },
+                        "State": "PaymentAuthorized",
+                        "OrderId": "211eda17-5e0e-4615-a54d-7b10fb58b694",
+                        "UnderReview": false,
+                        "Chargeback": false,
+                        "Reason": "Some_reason",
+                        "Expiry": "2022-12-13T01:01:01.01Z",
+                        "Action": {
+                          "Redirect": "http://some.redirect",
+                          "Challenge": "http:///some.challenge",
+                          "Display": {
+                            "AccountHolder": "Holder",
+                            "AccountNumber": "1234567890",
+                            "BankName": "Some bank",
+                            "City": "City name",
+                            "Iban": "NL23ABNA1522775986",
+                            "PaymentReference": "Some payment ref",
+                            "SwiftCode": "CHASFIHHXXX",
+                            "ExtraBankData": "Some extra data"
+                          }
+                        },
+                        "AdminUrl": "https://sandbox.withreach.com/?txn=482c5ca4-2f6e-4e8f-af37-07d106833570"
                       }
                     }
                   }
@@ -1827,18 +1964,9 @@
                         "Expiry": "2022-12-13T01:01:01.01Z",
                         "Action": {
                           "Redirect": "http://some.redirect",
-                          "Challenge": "http:///some.challenge",
-                          "Display": {
-                            "AccountHolder": "Holder",
-                            "AccountNumber": "1234567890",
-                            "BankName": "Some bank",
-                            "City": "City name",
-                            "Iban": "NL23ABNA1522775986",
-                            "PaymentReference": "Some payment ref",
-                            "SwiftCode": "CHASFIHHXXX",
-                            "ExtraBankData": "Some extra data"
-                          }
-                        }
+                          "Challenge": "http:///some.challenge"
+                        },
+                        "AdminUrl": "https://sandbox.withreach.com/?txn=482c5ca4-2f6e-4e8f-af37-07d106833570"
                       }
                     },
                     "Successful Online Payment": {
@@ -1913,18 +2041,9 @@
                         "Expiry": "2022-12-13T01:01:01.01Z",
                         "Action": {
                           "Redirect": "http://some.redirect",
-                          "Challenge": "http:///some.challenge",
-                          "Display": {
-                            "AccountHolder": "Holder",
-                            "AccountNumber": "1234567890",
-                            "BankName": "Some bank",
-                            "City": "City name",
-                            "Iban": "NL23ABNA1522775986",
-                            "PaymentReference": "Some payment ref",
-                            "SwiftCode": "CHASFIHHXXX",
-                            "ExtraBankData": "Some extra data"
-                          }
-                        }
+                          "Challenge": "http:///some.challenge"
+                        },
+                        "AdminUrl": "https://sandbox.withreach.com/?txn=482c5ca4-2f6e-4e8f-af37-07d106833570"
                       }
                     },
                     "Successful Offline Payment": {
@@ -2010,7 +2129,8 @@
                             "SwiftCode": "CHASFIHHXXX",
                             "ExtraBankData": "Some extra data"
                           }
-                        }
+                        },
+                        "AdminUrl": "https://sandbox.withreach.com/?txn=482c5ca4-2f6e-4e8f-af37-07d106833570"
                       }
                     }
                   }
@@ -2852,6 +2972,11 @@
             "Times": {
               "readOnly": true,
               "$ref": "#/components/schemas/Times"
+            },
+            "AdminUrl": {
+              "description": "A link to this order in the Reach admin app. You must have valid credentials to view",
+              "type": "string",
+              "readOnly": true
             }
           },
           "required": [
