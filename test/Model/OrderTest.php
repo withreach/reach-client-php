@@ -303,4 +303,13 @@ class OrderTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "admin_url"
+     */
+    public function testPropertyAdminUrl()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

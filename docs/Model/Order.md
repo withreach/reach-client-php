@@ -29,5 +29,6 @@ Name | Type | Description | Notes
 **expiry** | **string** | If the order was created with Capture false, and the payment is authorized, the RFC 3339 time at which this order expires. If further authentication is required, this is the time by which that authentication must be completed. | [optional] [readonly]
 **action** | [**\OpenAPI\Client\Model\Action**](Action.md) |  | [optional]
 **times** | [**\OpenAPI\Client\Model\Times**](Times.md) |  | [optional]
+**admin_url** | **string** | A link to this order in the Reach admin app. You must have valid credentials to view | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

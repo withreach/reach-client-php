@@ -82,7 +82,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'reason' => 'string',
         'expiry' => 'string',
         'action' => '\OpenAPI\Client\Model\Action',
-        'times' => '\OpenAPI\Client\Model\Times'
+        'times' => '\OpenAPI\Client\Model\Times',
+        'admin_url' => 'string'
     ];
 
     /**
@@ -117,7 +118,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'reason' => null,
         'expiry' => null,
         'action' => null,
-        'times' => null
+        'times' => null,
+        'admin_url' => null
     ];
 
     /**
@@ -171,7 +173,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'reason' => 'Reason',
         'expiry' => 'Expiry',
         'action' => 'Action',
-        'times' => 'Times'
+        'times' => 'Times',
+        'admin_url' => 'AdminUrl'
     ];
 
     /**
@@ -204,7 +207,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'reason' => 'setReason',
         'expiry' => 'setExpiry',
         'action' => 'setAction',
-        'times' => 'setTimes'
+        'times' => 'setTimes',
+        'admin_url' => 'setAdminUrl'
     ];
 
     /**
@@ -237,7 +241,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'reason' => 'getReason',
         'expiry' => 'getExpiry',
         'action' => 'getAction',
-        'times' => 'getTimes'
+        'times' => 'getTimes',
+        'admin_url' => 'getAdminUrl'
     ];
 
     /**
@@ -349,6 +354,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['expiry'] = $data['expiry'] ?? null;
         $this->container['action'] = $data['action'] ?? null;
         $this->container['times'] = $data['times'] ?? null;
+        $this->container['admin_url'] = $data['admin_url'] ?? null;
     }
 
     /**
@@ -1074,6 +1080,30 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTimes($times)
     {
         $this->container['times'] = $times;
+
+        return $this;
+    }
+
+    /**
+     * Gets admin_url
+     *
+     * @return string|null
+     */
+    public function getAdminUrl()
+    {
+        return $this->container['admin_url'];
+    }
+
+    /**
+     * Sets admin_url
+     *
+     * @param string|null $admin_url A link to this order in the Reach admin app. You must have valid credentials to view
+     *
+     * @return self
+     */
+    public function setAdminUrl($admin_url)
+    {
+        $this->container['admin_url'] = $admin_url;
 
         return $this;
     }
