@@ -3470,7 +3470,7 @@
               "description": "Refund state. See: https://docs.withreach.com/docs/states-and-events#refund-states",
               "type": "string",
               "enum": [
-                "IN_PROGRESS",
+                "INPROGRESS",
                 "SUCCEEDED",
                 "FAILED"
               ],
