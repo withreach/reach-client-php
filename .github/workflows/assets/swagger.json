@@ -3122,7 +3122,8 @@
           "properties": {
             "Street": {
               "description": "Customer's street address.",
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "City": {
               "description": "Customer's city.",

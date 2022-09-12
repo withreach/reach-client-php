@@ -213,6 +213,10 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['street']) && (mb_strlen($this->container['street']) < 1)) {
+            $invalidProperties[] = "invalid value for 'street', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -247,6 +251,11 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setStreet($street)
     {
+
+        if (!is_null($street) && (mb_strlen($street) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $street when calling Address., must be bigger than or equal to 1.');
+        }
+
         $this->container['street'] = $street;
 
         return $this;
