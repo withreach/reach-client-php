@@ -180,7 +180,7 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATE_IN_PROGRESS = 'IN_PROGRESS';
+    public const STATE_IN_PROGRESS = 'INPROGRESS';
     public const STATE_SUCCEEDED = 'SUCCEEDED';
     public const STATE_FAILED = 'FAILED';
 
