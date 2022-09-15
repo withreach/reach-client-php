@@ -89,15 +89,6 @@ class OnlineTest extends TestCase
     }
 
     /**
-     * Test attribute "return_url"
-     */
-    public function testPropertyReturnUrl()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "ideal"
      */
     public function testPropertyIdeal()

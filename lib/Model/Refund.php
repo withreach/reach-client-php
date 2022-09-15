@@ -180,7 +180,7 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATE_IN_PROGRESS = 'INPROGRESS';
+    public const STATE_INPROGRESS = 'INPROGRESS';
     public const STATE_SUCCEEDED = 'SUCCEEDED';
     public const STATE_FAILED = 'FAILED';
 
@@ -192,7 +192,7 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getStateAllowableValues()
     {
         return [
-            self::STATE_IN_PROGRESS,
+            self::STATE_INPROGRESS,
             self::STATE_SUCCEEDED,
             self::STATE_FAILED,
         ];
@@ -248,6 +248,10 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['state'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['refund_reference']) && (mb_strlen($this->container['refund_reference']) < 1)) {
+            $invalidProperties[] = "invalid value for 'refund_reference', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -376,6 +380,11 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setRefundReference($refund_reference)
     {
+
+        if (!is_null($refund_reference) && (mb_strlen($refund_reference) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $refund_reference when calling Refund., must be bigger than or equal to 1.');
+        }
+
         $this->container['refund_reference'] = $refund_reference;
 
         return $this;

@@ -19,7 +19,6 @@ docs/Model/Expiry.md
 docs/Model/FieldErrors.md
 docs/Model/Ideal.md
 docs/Model/Item.md
-docs/Model/Offline.md
 docs/Model/Online.md
 docs/Model/Order.md
 docs/Model/Payment.md
@@ -48,7 +47,6 @@ lib/Model/FieldErrors.php
 lib/Model/Ideal.php
 lib/Model/Item.php
 lib/Model/ModelInterface.php
-lib/Model/Offline.php
 lib/Model/Online.php
 lib/Model/Order.php
 lib/Model/Payment.php
@@ -74,7 +72,6 @@ test/Model/ExpiryTest.php
 test/Model/FieldErrorsTest.php
 test/Model/IdealTest.php
 test/Model/ItemTest.php
-test/Model/OfflineTest.php
 test/Model/OnlineTest.php
 test/Model/OrderTest.php
 test/Model/PaymentTest.php

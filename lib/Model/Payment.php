@@ -60,9 +60,10 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'type' => 'string',
         'method' => 'string',
+        'return_url' => 'string',
         'online' => '\OpenAPI\Client\Model\Online',
         'card' => '\OpenAPI\Client\Model\Card',
-        'offline' => '\OpenAPI\Client\Model\Offline'
+        'offline' => 'object'
     ];
 
     /**
@@ -75,6 +76,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'type' => null,
         'method' => null,
+        'return_url' => null,
         'online' => null,
         'card' => null,
         'offline' => null
@@ -109,6 +111,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'type' => 'Type',
         'method' => 'Method',
+        'return_url' => 'ReturnUrl',
         'online' => 'Online',
         'card' => 'Card',
         'offline' => 'Offline'
@@ -122,6 +125,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'type' => 'setType',
         'method' => 'setMethod',
+        'return_url' => 'setReturnUrl',
         'online' => 'setOnline',
         'card' => 'setCard',
         'offline' => 'setOffline'
@@ -135,6 +139,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'type' => 'getType',
         'method' => 'getMethod',
+        'return_url' => 'getReturnUrl',
         'online' => 'getOnline',
         'card' => 'getCard',
         'offline' => 'getOffline'
@@ -216,6 +221,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['method'] = $data['method'] ?? null;
+        $this->container['return_url'] = $data['return_url'] ?? null;
         $this->container['online'] = $data['online'] ?? null;
         $this->container['card'] = $data['card'] ?? null;
         $this->container['offline'] = $data['offline'] ?? null;
@@ -237,6 +243,10 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['method']) && (mb_strlen($this->container['method']) < 1)) {
+            $invalidProperties[] = "invalid value for 'method', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -307,7 +317,36 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setMethod($method)
     {
+
+        if (!is_null($method) && (mb_strlen($method) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $method when calling Payment., must be bigger than or equal to 1.');
+        }
+
         $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets return_url
+     *
+     * @return string|null
+     */
+    public function getReturnUrl()
+    {
+        return $this->container['return_url'];
+    }
+
+    /**
+     * Sets return_url
+     *
+     * @param string|null $return_url Merchant URL to redirect a user to upon completion at a third party payment processor or a 3DS challenge. This may contain \"{SessionId}\" anywhere in the string to have the SessionId embedded in the url.
+     *
+     * @return self
+     */
+    public function setReturnUrl($return_url)
+    {
+        $this->container['return_url'] = $return_url;
 
         return $this;
     }
@@ -363,7 +402,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offline
      *
-     * @return \OpenAPI\Client\Model\Offline|null
+     * @return object|null
      */
     public function getOffline()
     {
@@ -373,7 +412,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets offline
      *
-     * @param \OpenAPI\Client\Model\Offline|null $offline offline
+     * @param object|null $offline Offline payment information.
      *
      * @return self
      */

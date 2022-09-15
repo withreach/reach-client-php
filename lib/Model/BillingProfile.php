@@ -237,15 +237,43 @@ class BillingProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['billing_profile_reference']) && (mb_strlen($this->container['billing_profile_reference']) < 1)) {
+            $invalidProperties[] = "invalid value for 'billing_profile_reference', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['company']) && (mb_strlen($this->container['company']) < 1)) {
+            $invalidProperties[] = "invalid value for 'company', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
         }
+        if ((mb_strlen($this->container['email']) < 1)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['address'] === null) {
             $invalidProperties[] = "'address' can't be null";
         }
+        if (!is_null($this->container['phone']) && (mb_strlen($this->container['phone']) < 1)) {
+            $invalidProperties[] = "invalid value for 'phone', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['birthdate']) && (mb_strlen($this->container['birthdate']) < 1)) {
+            $invalidProperties[] = "invalid value for 'birthdate', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['national_identifier']) && (mb_strlen($this->container['national_identifier']) < 1)) {
+            $invalidProperties[] = "invalid value for 'national_identifier', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -304,6 +332,11 @@ class BillingProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setBillingProfileReference($billing_profile_reference)
     {
+
+        if (!is_null($billing_profile_reference) && (mb_strlen($billing_profile_reference) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $billing_profile_reference when calling BillingProfile., must be bigger than or equal to 1.');
+        }
+
         $this->container['billing_profile_reference'] = $billing_profile_reference;
 
         return $this;
@@ -328,6 +361,11 @@ class BillingProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setName($name)
     {
+
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling BillingProfile., must be bigger than or equal to 1.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;
@@ -352,6 +390,11 @@ class BillingProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setCompany($company)
     {
+
+        if (!is_null($company) && (mb_strlen($company) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $company when calling BillingProfile., must be bigger than or equal to 1.');
+        }
+
         $this->container['company'] = $company;
 
         return $this;
@@ -376,6 +419,11 @@ class BillingProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setEmail($email)
     {
+
+        if ((mb_strlen($email) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling BillingProfile., must be bigger than or equal to 1.');
+        }
+
         $this->container['email'] = $email;
 
         return $this;
@@ -424,6 +472,11 @@ class BillingProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setPhone($phone)
     {
+
+        if (!is_null($phone) && (mb_strlen($phone) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $phone when calling BillingProfile., must be bigger than or equal to 1.');
+        }
+
         $this->container['phone'] = $phone;
 
         return $this;
@@ -448,6 +501,11 @@ class BillingProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setBirthdate($birthdate)
     {
+
+        if (!is_null($birthdate) && (mb_strlen($birthdate) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $birthdate when calling BillingProfile., must be bigger than or equal to 1.');
+        }
+
         $this->container['birthdate'] = $birthdate;
 
         return $this;
@@ -472,6 +530,11 @@ class BillingProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setNationalIdentifier($national_identifier)
     {
+
+        if (!is_null($national_identifier) && (mb_strlen($national_identifier) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $national_identifier when calling BillingProfile., must be bigger than or equal to 1.');
+        }
+
         $this->container['national_identifier'] = $national_identifier;
 
         return $this;

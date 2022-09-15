@@ -222,6 +222,21 @@ class ShippingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['company']) && (mb_strlen($this->container['company']) < 1)) {
+            $invalidProperties[] = "invalid value for 'company', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['email'] === null) {
+            $invalidProperties[] = "'email' can't be null";
+        }
+        if ((mb_strlen($this->container['email']) < 1)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['address'] === null) {
             $invalidProperties[] = "'address' can't be null";
         }
@@ -307,6 +322,11 @@ class ShippingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setName($name)
     {
+
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ShippingDetails., must be bigger than or equal to 1.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;
@@ -331,6 +351,11 @@ class ShippingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setCompany($company)
     {
+
+        if (!is_null($company) && (mb_strlen($company) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $company when calling ShippingDetails., must be bigger than or equal to 1.');
+        }
+
         $this->container['company'] = $company;
 
         return $this;
@@ -339,7 +364,7 @@ class ShippingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets email
      *
-     * @return string|null
+     * @return string
      */
     public function getEmail()
     {
@@ -349,12 +374,17 @@ class ShippingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email Customer’s email address
+     * @param string $email Customer’s email address
      *
      * @return self
      */
     public function setEmail($email)
     {
+
+        if ((mb_strlen($email) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling ShippingDetails., must be bigger than or equal to 1.');
+        }
+
         $this->container['email'] = $email;
 
         return $this;

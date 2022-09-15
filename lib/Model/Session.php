@@ -348,6 +348,14 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
+        if ((mb_strlen($this->container['currency']) > 3)) {
+            $invalidProperties[] = "invalid value for 'currency', the character length must be smaller than or equal to 3.";
+        }
+
+        if ((mb_strlen($this->container['currency']) < 3)) {
+            $invalidProperties[] = "invalid value for 'currency', the character length must be bigger than or equal to 3.";
+        }
+
         if ($this->container['items'] === null) {
             $invalidProperties[] = "'items' can't be null";
         }
@@ -357,9 +365,17 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['complete_url'] === null) {
             $invalidProperties[] = "'complete_url' can't be null";
         }
+        if ((mb_strlen($this->container['complete_url']) < 1)) {
+            $invalidProperties[] = "invalid value for 'complete_url', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['cancel_url'] === null) {
             $invalidProperties[] = "'cancel_url' can't be null";
         }
+        if ((mb_strlen($this->container['cancel_url']) < 1)) {
+            $invalidProperties[] = "invalid value for 'cancel_url', the character length must be bigger than or equal to 1.";
+        }
+
         if (!is_null($this->container['billing_profile_id']) && (mb_strlen($this->container['billing_profile_id']) > 36)) {
             $invalidProperties[] = "invalid value for 'billing_profile_id', the character length must be smaller than or equal to 36.";
         }
@@ -370,6 +386,10 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['billing_profile_id']) && !preg_match("/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/", $this->container['billing_profile_id'])) {
             $invalidProperties[] = "invalid value for 'billing_profile_id', must be conform to the pattern /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.";
+        }
+
+        if (!is_null($this->container['billing_profile_reference']) && (mb_strlen($this->container['billing_profile_reference']) < 1)) {
+            $invalidProperties[] = "invalid value for 'billing_profile_reference', the character length must be bigger than or equal to 1.";
         }
 
         if (!is_null($this->container['rate_offer_id']) && (mb_strlen($this->container['rate_offer_id']) > 36)) {
@@ -515,6 +535,13 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setCurrency($currency)
     {
+        if ((mb_strlen($currency) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $currency when calling Session., must be smaller than or equal to 3.');
+        }
+        if ((mb_strlen($currency) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $currency when calling Session., must be bigger than or equal to 3.');
+        }
+
         $this->container['currency'] = $currency;
 
         return $this;
@@ -611,6 +638,11 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setCompleteUrl($complete_url)
     {
+
+        if ((mb_strlen($complete_url) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $complete_url when calling Session., must be bigger than or equal to 1.');
+        }
+
         $this->container['complete_url'] = $complete_url;
 
         return $this;
@@ -635,6 +667,11 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setCancelUrl($cancel_url)
     {
+
+        if ((mb_strlen($cancel_url) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $cancel_url when calling Session., must be bigger than or equal to 1.');
+        }
+
         $this->container['cancel_url'] = $cancel_url;
 
         return $this;
@@ -717,6 +754,11 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setBillingProfileReference($billing_profile_reference)
     {
+
+        if (!is_null($billing_profile_reference) && (mb_strlen($billing_profile_reference) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $billing_profile_reference when calling Session., must be bigger than or equal to 1.');
+        }
+
         $this->container['billing_profile_reference'] = $billing_profile_reference;
 
         return $this;

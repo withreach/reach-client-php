@@ -189,6 +189,10 @@ class Ideal implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['issuer_id']) && (mb_strlen($this->container['issuer_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'issuer_id', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -223,6 +227,11 @@ class Ideal implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setIssuerId($issuer_id)
     {
+
+        if (!is_null($issuer_id) && (mb_strlen($issuer_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $issuer_id when calling Ideal., must be bigger than or equal to 1.');
+        }
+
         $this->container['issuer_id'] = $issuer_id;
 
         return $this;

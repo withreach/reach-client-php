@@ -81,6 +81,8 @@ Class | Method | HTTP request | Description
 *OrderApi* | [**captureOrder**](docs/Api/OrderApi.md#captureorder) | **POST** /v1/orders/{OrderId}/capture | Capture an Order.
 *OrderApi* | [**createOrder**](docs/Api/OrderApi.md#createorder) | **POST** /v1/orders | Create a new order
 *OrderApi* | [**createRefund**](docs/Api/OrderApi.md#createrefund) | **POST** /v1/orders/{OrderId}/refunds | Issue a refund against an order
+*OrderApi* | [**getRefundById**](docs/Api/OrderApi.md#getrefundbyid) | **GET** /v1/orders/{OrderId}/refunds/{RefundId} | Retrieve a refund by id for a given order id
+*OrderApi* | [**getRefundList**](docs/Api/OrderApi.md#getrefundlist) | **GET** /v1/orders/{OrderId}/refunds | Retrieve a list of refunds for a given order id
 *OrderApi* | [**retrieveOrder**](docs/Api/OrderApi.md#retrieveorder) | **GET** /v1/orders/{OrderId} | Retrieve an Order.
 *SessionApi* | [**cancelSession**](docs/Api/SessionApi.md#cancelsession) | **DELETE** /v1/session/{SessionId}/cancel | Cancel a non-final Session
 *SessionApi* | [**createSession**](docs/Api/SessionApi.md#createsession) | **POST** /v1/session | Create a new Session
@@ -102,7 +104,6 @@ Class | Method | HTTP request | Description
 - [FieldErrors](docs/Model/FieldErrors.md)
 - [Ideal](docs/Model/Ideal.md)
 - [Item](docs/Model/Item.md)
-- [Offline](docs/Model/Offline.md)
 - [Online](docs/Model/Online.md)
 - [Order](docs/Model/Order.md)
 - [Payment](docs/Model/Payment.md)
