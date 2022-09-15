@@ -6,7 +6,7 @@ on:
     - cron: '5 4 * * SUN'
 
 env:
-  SWAGGER_URL: ./.github/workflows/assets/swagger.json
+  SWAGGER_URL: ./.github/workflows/assets/swagger.yaml
 
 jobs:
   build:
