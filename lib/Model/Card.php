@@ -59,7 +59,6 @@ class Card implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'stash_id' => 'string',
-        'return_url' => 'string',
         'bin' => 'string',
         'last_four' => 'string',
         'expiry' => '\OpenAPI\Client\Model\Expiry'
@@ -74,7 +73,6 @@ class Card implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'stash_id' => null,
-        'return_url' => null,
         'bin' => null,
         'last_four' => null,
         'expiry' => null
@@ -108,7 +106,6 @@ class Card implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'stash_id' => 'StashId',
-        'return_url' => 'ReturnUrl',
         'bin' => 'Bin',
         'last_four' => 'LastFour',
         'expiry' => 'Expiry'
@@ -121,7 +118,6 @@ class Card implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'stash_id' => 'setStashId',
-        'return_url' => 'setReturnUrl',
         'bin' => 'setBin',
         'last_four' => 'setLastFour',
         'expiry' => 'setExpiry'
@@ -134,7 +130,6 @@ class Card implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'stash_id' => 'getStashId',
-        'return_url' => 'getReturnUrl',
         'bin' => 'getBin',
         'last_four' => 'getLastFour',
         'expiry' => 'getExpiry'
@@ -198,7 +193,6 @@ class Card implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['stash_id'] = $data['stash_id'] ?? null;
-        $this->container['return_url'] = $data['return_url'] ?? null;
         $this->container['bin'] = $data['bin'] ?? null;
         $this->container['last_four'] = $data['last_four'] ?? null;
         $this->container['expiry'] = $data['expiry'] ?? null;
@@ -212,6 +206,10 @@ class Card implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['stash_id']) && (mb_strlen($this->container['stash_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'stash_id', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -247,31 +245,12 @@ class Card implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setStashId($stash_id)
     {
+
+        if (!is_null($stash_id) && (mb_strlen($stash_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $stash_id when calling Card., must be bigger than or equal to 1.');
+        }
+
         $this->container['stash_id'] = $stash_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets return_url
-     *
-     * @return string|null
-     */
-    public function getReturnUrl()
-    {
-        return $this->container['return_url'];
-    }
-
-    /**
-     * Sets return_url
-     *
-     * @param string|null $return_url Merchant URL to redirect a user to upon completion of a 3DS Challenge. This may contain \"{SessionId}\" anywhere in the string to have the SessionId embedded in the url.
-     *
-     * @return self
-     */
-    public function setReturnUrl($return_url)
-    {
-        $this->container['return_url'] = $return_url;
 
         return $this;
     }

@@ -120,6 +120,30 @@ class OrderApiTest extends TestCase
     }
 
     /**
+     * Test case for getRefundById
+     *
+     * Retrieve a refund by id for a given order id.
+     *
+     */
+    public function testGetRefundById()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getRefundList
+     *
+     * Retrieve a list of refunds for a given order id.
+     *
+     */
+    public function testGetRefundList()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for retrieveOrder
      *
      * Retrieve an Order..

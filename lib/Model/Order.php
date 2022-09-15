@@ -412,6 +412,18 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'billing_profile_id', must be conform to the pattern /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.";
         }
 
+        if (!is_null($this->container['billing_profile_reference']) && (mb_strlen($this->container['billing_profile_reference']) < 1)) {
+            $invalidProperties[] = "invalid value for 'billing_profile_reference', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['currency']) && (mb_strlen($this->container['currency']) > 3)) {
+            $invalidProperties[] = "invalid value for 'currency', the character length must be smaller than or equal to 3.";
+        }
+
+        if (!is_null($this->container['currency']) && (mb_strlen($this->container['currency']) < 3)) {
+            $invalidProperties[] = "invalid value for 'currency', the character length must be bigger than or equal to 3.";
+        }
+
         if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) > 36)) {
             $invalidProperties[] = "invalid value for 'contract_id', the character length must be smaller than or equal to 36.";
         }
@@ -422,6 +434,10 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['contract_id']) && !preg_match("/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/", $this->container['contract_id'])) {
             $invalidProperties[] = "invalid value for 'contract_id', must be conform to the pattern /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.";
+        }
+
+        if (!is_null($this->container['device_fingerprint']) && (mb_strlen($this->container['device_fingerprint']) < 1)) {
+            $invalidProperties[] = "invalid value for 'device_fingerprint', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -613,6 +629,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setBillingProfileReference($billing_profile_reference)
     {
+
+        if (!is_null($billing_profile_reference) && (mb_strlen($billing_profile_reference) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $billing_profile_reference when calling Order., must be bigger than or equal to 1.');
+        }
+
         $this->container['billing_profile_reference'] = $billing_profile_reference;
 
         return $this;
@@ -637,6 +658,13 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setCurrency($currency)
     {
+        if (!is_null($currency) && (mb_strlen($currency) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $currency when calling Order., must be smaller than or equal to 3.');
+        }
+        if (!is_null($currency) && (mb_strlen($currency) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $currency when calling Order., must be bigger than or equal to 3.');
+        }
+
         $this->container['currency'] = $currency;
 
         return $this;
@@ -743,6 +771,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setDeviceFingerprint($device_fingerprint)
     {
+
+        if (!is_null($device_fingerprint) && (mb_strlen($device_fingerprint) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $device_fingerprint when calling Order., must be bigger than or equal to 1.');
+        }
+
         $this->container['device_fingerprint'] = $device_fingerprint;
 
         return $this;

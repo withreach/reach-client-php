@@ -59,7 +59,6 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'locale' => 'string',
-        'return_url' => 'string',
         'ideal' => '\OpenAPI\Client\Model\Ideal'
     ];
 
@@ -72,7 +71,6 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'locale' => null,
-        'return_url' => null,
         'ideal' => null
     ];
 
@@ -104,7 +102,6 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'locale' => 'Locale',
-        'return_url' => 'ReturnUrl',
         'ideal' => 'Ideal'
     ];
 
@@ -115,7 +112,6 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'locale' => 'setLocale',
-        'return_url' => 'setReturnUrl',
         'ideal' => 'setIdeal'
     ];
 
@@ -126,7 +122,6 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'locale' => 'getLocale',
-        'return_url' => 'getReturnUrl',
         'ideal' => 'getIdeal'
     ];
 
@@ -188,7 +183,6 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['locale'] = $data['locale'] ?? null;
-        $this->container['return_url'] = $data['return_url'] ?? null;
         $this->container['ideal'] = $data['ideal'] ?? null;
     }
 
@@ -200,6 +194,10 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['locale']) && (mb_strlen($this->container['locale']) < 1)) {
+            $invalidProperties[] = "invalid value for 'locale', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -235,31 +233,12 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setLocale($locale)
     {
+
+        if (!is_null($locale) && (mb_strlen($locale) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $locale when calling Online., must be bigger than or equal to 1.');
+        }
+
         $this->container['locale'] = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Gets return_url
-     *
-     * @return string|null
-     */
-    public function getReturnUrl()
-    {
-        return $this->container['return_url'];
-    }
-
-    /**
-     * Sets return_url
-     *
-     * @param string|null $return_url Merchant URL to redirect a user to upon completion at a third party payment processor. This may contain \"{SessionId}\" anywhere in the string to have the SessionId embedded in the url.
-     *
-     * @return self
-     */
-    public function setReturnUrl($return_url)
-    {
-        $this->container['return_url'] = $return_url;
 
         return $this;
     }

@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**captureOrder()**](OrderApi.md#captureOrder) | **POST** /v1/orders/{OrderId}/capture | Capture an Order.
 [**createOrder()**](OrderApi.md#createOrder) | **POST** /v1/orders | Create a new order
 [**createRefund()**](OrderApi.md#createRefund) | **POST** /v1/orders/{OrderId}/refunds | Issue a refund against an order
+[**getRefundById()**](OrderApi.md#getRefundById) | **GET** /v1/orders/{OrderId}/refunds/{RefundId} | Retrieve a refund by id for a given order id
+[**getRefundList()**](OrderApi.md#getRefundList) | **GET** /v1/orders/{OrderId}/refunds | Retrieve a list of refunds for a given order id
 [**retrieveOrder()**](OrderApi.md#retrieveOrder) | **GET** /v1/orders/{OrderId} | Retrieve an Order.
 
 
@@ -157,7 +159,7 @@ $apiInstance = new OpenAPI\Client\Api\OrderApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order = {"SessionId":"c47fd55e-f6ca-43df-b45e-77d757755e27","MerchantReference":"SomeReference","DeviceFingerprint":"b16f631b-931f-4bfb-adb4-402f94c3e49c","Currency":"EUR","Items":[{"Name":"Item 1","Amount":1,"Quantity":1},{"Name":"Item 2","Amount":2.0,"Quantity":2}],"Discounts":[{"Name":"Discount 1","Amount":3.0}],"ShippingDetails":{"ShippingAmount":4.05,"DutyAmount":5.05,"Name":"Shipping Name","Email":"ship@email.com","Phone":"1234567890","Address":{"Street":"shipping street","City":"shipping city","Region":"shipping region","Country":"CA","Postcode":"H0H0H0"}},"TaxAmount":6.06,"BillingProfile":{"BillingProfileReference":"YourUniqueReference","Name":"Margery Kershaw","Email":"margery@email.com","Phone":"9876543210","Birthdate":"1980-01-02","Address":{"Street":"42 Pinnacles Lane","City":"San Jose","Region":"CA","Country":"US","Postcode":"90210"}},"ViaAgent":true,"AcceptLiability":true,"AutoCapture":true,"OpenContract":true,"NotifyUrl":"http://url.notify","Meta":{"field":"value","AnotherField":"Some other value"},"Payment":{"Type":"CARD","Method":"VISA","Card":{"StashId":"8d12c2db-ed2f-4e89-b378-1","ReturnUrl":"http://url.return"}}}; // \OpenAPI\Client\Model\Order | Order to be created
+$order = {"SessionId":"c47fd55e-f6ca-43df-b45e-77d757755e27","MerchantReference":"SomeReference","DeviceFingerprint":"b16f631b-931f-4bfb-adb4-402f94c3e49c","Currency":"EUR","Items":[{"Name":"Item 1","Amount":1,"Quantity":1},{"Name":"Item 2","Amount":2,"Quantity":2}],"Discounts":[{"Name":"Discount 1","Amount":3}],"ShippingDetails":{"ShippingAmount":4.05,"DutyAmount":5.05,"Name":"Shipping Name","Email":"ship@email.com","Phone":"1234567890","Address":{"Street":"shipping street","City":"shipping city","Region":"shipping region","Country":"CA","Postcode":"H0H0H0"}},"TaxAmount":6.06,"BillingProfile":{"BillingProfileReference":"YourUniqueReference","Name":"Margery Kershaw","Email":"margery@email.com","Phone":"9876543210","Birthdate":"1980-01-02","Address":{"Street":"42 Pinnacles Lane","City":"San Jose","Region":"CA","Country":"US","Postcode":"90210"}},"ViaAgent":true,"AcceptLiability":true,"AutoCapture":true,"OpenContract":true,"NotifyUrl":"http://url.notify","Meta":{"field":"value","AnotherField":"Some other value"},"Payment":{"Type":"CARD","Method":"VISA","ReturnUrl":"http://url.return","Card":{"StashId":"8d12c2db-ed2f-4e89-b378-1"}}}; // \OpenAPI\Client\Model\Order | Order to be created
 
 try {
     $result = $apiInstance->createOrder($order);
@@ -246,6 +248,128 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getRefundById()`
+
+```php
+getRefundById($order_id, $refund_id): \OpenAPI\Client\Model\Refund
+```
+
+Retrieve a refund by id for a given order id
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new OpenAPI\Client\Api\OrderApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = cc7236aa-d11b-436c-a29c-d26cecadc847; // string | Order ID containing the desired refund.
+$refund_id = cc7236aa-d11b-436c-a29c-d26cecadc847; // string | Refund ID to retrieve.
+
+try {
+    $result = $apiInstance->getRefundById($order_id, $refund_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrderApi->getRefundById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **string**| Order ID containing the desired refund. |
+ **refund_id** | **string**| Refund ID to retrieve. |
+
+### Return type
+
+[**\OpenAPI\Client\Model\Refund**](../Model/Refund.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getRefundList()`
+
+```php
+getRefundList($order_id): \OpenAPI\Client\Model\Refund
+```
+
+Retrieve a list of refunds for a given order id
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new OpenAPI\Client\Api\OrderApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = cc7236aa-d11b-436c-a29c-d26cecadc847; // string | Order ID containing the desired refund.
+
+try {
+    $result = $apiInstance->getRefundList($order_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrderApi->getRefundList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **string**| Order ID containing the desired refund. |
+
+### Return type
+
+[**\OpenAPI\Client\Model\Refund**](../Model/Refund.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
