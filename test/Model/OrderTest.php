@@ -89,6 +89,15 @@ class OrderTest extends TestCase
     }
 
     /**
+     * Test attribute "session_id"
+     */
+    public function testPropertySessionId()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "state"
      */
     public function testPropertyState()

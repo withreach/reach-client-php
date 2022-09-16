@@ -59,6 +59,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'order_id' => 'string',
+        'session_id' => 'string',
         'state' => 'string',
         'merchant_reference' => 'string',
         'billing_profile' => '\OpenAPI\Client\Model\BillingProfile',
@@ -95,6 +96,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'order_id' => 'uuid',
+        'session_id' => 'uuid',
         'state' => null,
         'merchant_reference' => null,
         'billing_profile' => null,
@@ -150,6 +152,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'order_id' => 'OrderId',
+        'session_id' => 'SessionId',
         'state' => 'State',
         'merchant_reference' => 'MerchantReference',
         'billing_profile' => 'BillingProfile',
@@ -184,6 +187,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'order_id' => 'setOrderId',
+        'session_id' => 'setSessionId',
         'state' => 'setState',
         'merchant_reference' => 'setMerchantReference',
         'billing_profile' => 'setBillingProfile',
@@ -218,6 +222,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'order_id' => 'getOrderId',
+        'session_id' => 'getSessionId',
         'state' => 'getState',
         'merchant_reference' => 'getMerchantReference',
         'billing_profile' => 'getBillingProfile',
@@ -330,6 +335,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = $data['order_id'] ?? null;
+        $this->container['session_id'] = $data['session_id'] ?? null;
         $this->container['state'] = $data['state'] ?? null;
         $this->container['merchant_reference'] = $data['merchant_reference'] ?? null;
         $this->container['billing_profile'] = $data['billing_profile'] ?? null;
@@ -379,6 +385,18 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!preg_match("/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/", $this->container['order_id'])) {
             $invalidProperties[] = "invalid value for 'order_id', must be conform to the pattern /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.";
+        }
+
+        if (!is_null($this->container['session_id']) && (mb_strlen($this->container['session_id']) > 36)) {
+            $invalidProperties[] = "invalid value for 'session_id', the character length must be smaller than or equal to 36.";
+        }
+
+        if (!is_null($this->container['session_id']) && (mb_strlen($this->container['session_id']) < 36)) {
+            $invalidProperties[] = "invalid value for 'session_id', the character length must be bigger than or equal to 36.";
+        }
+
+        if (!is_null($this->container['session_id']) && !preg_match("/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/", $this->container['session_id'])) {
+            $invalidProperties[] = "invalid value for 'session_id', must be conform to the pattern /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.";
         }
 
         if ($this->container['state'] === null) {
@@ -485,6 +503,40 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets session_id
+     *
+     * @return string|null
+     */
+    public function getSessionId()
+    {
+        return $this->container['session_id'];
+    }
+
+    /**
+     * Sets session_id
+     *
+     * @param string|null $session_id UUID representing the Session
+     *
+     * @return self
+     */
+    public function setSessionId($session_id)
+    {
+        if (!is_null($session_id) && (mb_strlen($session_id) > 36)) {
+            throw new \InvalidArgumentException('invalid length for $session_id when calling Order., must be smaller than or equal to 36.');
+        }
+        if (!is_null($session_id) && (mb_strlen($session_id) < 36)) {
+            throw new \InvalidArgumentException('invalid length for $session_id when calling Order., must be bigger than or equal to 36.');
+        }
+        if (!is_null($session_id) && (!preg_match("/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/", $session_id))) {
+            throw new \InvalidArgumentException("invalid value for $session_id when calling Order., must conform to the pattern /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.");
+        }
+
+        $this->container['session_id'] = $session_id;
 
         return $this;
     }

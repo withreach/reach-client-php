@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **order_id** | **string** | UUID identifying the individual Order. | [readonly]
+**session_id** | **string** | UUID representing the Session | [optional] [readonly]
 **state** | **string** | Order state. See: https://docs.withreach.com/docs/states-and-events | [readonly]
 **merchant_reference** | **string** | Unique identifier provided by merchant. |
 **billing_profile** | [**\OpenAPI\Client\Model\BillingProfile**](BillingProfile.md) |  | [optional]
