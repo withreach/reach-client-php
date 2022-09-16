@@ -2179,6 +2179,14 @@ components:
           minLength: 36
           maxLength: 36
           readOnly: true
+        SessionId:
+          description: UUID representing the Session
+          type: string
+          format: uuid
+          pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+          minLength: 36
+          maxLength: 36
+          readOnly: true
         State:
           description: 'Order state. See: https://docs.withreach.com/docs/states-and-events'
           type: string
@@ -2295,7 +2303,6 @@ components:
         - OrderId
         - State
         - MerchantReference
-        - SessionId
     Item:
       description: A line item, representing one or more digital or physical goods that a user is paying for.
       type: object
