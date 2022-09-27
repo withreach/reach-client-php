@@ -230,10 +230,7 @@ class ShippingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'company', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
-        }
-        if ((mb_strlen($this->container['email']) < 1)) {
+        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) < 1)) {
             $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 1.";
         }
 
@@ -364,7 +361,7 @@ class ShippingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets email
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail()
     {
@@ -374,14 +371,14 @@ class ShippingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string $email Customer’s email address
+     * @param string|null $email Customer’s email address
      *
      * @return self
      */
     public function setEmail($email)
     {
 
-        if ((mb_strlen($email) < 1)) {
+        if (!is_null($email) && (mb_strlen($email) < 1)) {
             throw new \InvalidArgumentException('invalid length for $email when calling ShippingDetails., must be bigger than or equal to 1.');
         }
 
