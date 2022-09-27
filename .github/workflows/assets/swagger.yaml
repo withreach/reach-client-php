@@ -2413,7 +2413,6 @@ components:
         - Address
         - City
         - Country
-        - Email
     Address:
       description: A shipping or billing address
       type: object
