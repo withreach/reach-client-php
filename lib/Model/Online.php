@@ -59,7 +59,8 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'locale' => 'string',
-        'ideal' => '\OpenAPI\Client\Model\Ideal'
+        'ideal' => '\OpenAPI\Client\Model\Ideal',
+        'paypal' => '\OpenAPI\Client\Model\Paypal'
     ];
 
     /**
@@ -71,7 +72,8 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'locale' => null,
-        'ideal' => null
+        'ideal' => null,
+        'paypal' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'locale' => 'Locale',
-        'ideal' => 'Ideal'
+        'ideal' => 'Ideal',
+        'paypal' => 'Paypal'
     ];
 
     /**
@@ -112,7 +115,8 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'locale' => 'setLocale',
-        'ideal' => 'setIdeal'
+        'ideal' => 'setIdeal',
+        'paypal' => 'setPaypal'
     ];
 
     /**
@@ -122,7 +126,8 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'locale' => 'getLocale',
-        'ideal' => 'getIdeal'
+        'ideal' => 'getIdeal',
+        'paypal' => 'getPaypal'
     ];
 
     /**
@@ -184,6 +189,7 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['locale'] = $data['locale'] ?? null;
         $this->container['ideal'] = $data['ideal'] ?? null;
+        $this->container['paypal'] = $data['paypal'] ?? null;
     }
 
     /**
@@ -263,6 +269,30 @@ class Online implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIdeal($ideal)
     {
         $this->container['ideal'] = $ideal;
+
+        return $this;
+    }
+
+    /**
+     * Gets paypal
+     *
+     * @return \OpenAPI\Client\Model\Paypal|null
+     */
+    public function getPaypal()
+    {
+        return $this->container['paypal'];
+    }
+
+    /**
+     * Sets paypal
+     *
+     * @param \OpenAPI\Client\Model\Paypal|null $paypal paypal
+     *
+     * @return self
+     */
+    public function setPaypal($paypal)
+    {
+        $this->container['paypal'] = $paypal;
 
         return $this;
     }
