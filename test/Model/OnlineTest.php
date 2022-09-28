@@ -96,4 +96,13 @@ class OnlineTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "paypal"
+     */
+    public function testPropertyPaypal()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }
