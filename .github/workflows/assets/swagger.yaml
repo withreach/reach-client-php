@@ -2523,6 +2523,8 @@ components:
           example: en-us
         Ideal:
           $ref: '#/components/schemas/Ideal'
+        Paypal:
+          $ref: '#/components/schemas/Paypal'
     Ideal:
       description: Payment details specific to iDeal.
       type: object
