@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * RateOffersTest Class Doc Comment
  *
  * @category    Class
- * @description Response object for get Rates.
+ * @description Response object for getRates request.
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
