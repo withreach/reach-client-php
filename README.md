@@ -84,6 +84,8 @@ Class | Method | HTTP request | Description
 *OrderApi* | [**getRefundById**](docs/Api/OrderApi.md#getrefundbyid) | **GET** /v1/orders/{OrderId}/refunds/{RefundId} | Retrieve a refund by id for a given order id
 *OrderApi* | [**getRefundList**](docs/Api/OrderApi.md#getrefundlist) | **GET** /v1/orders/{OrderId}/refunds | Retrieve a list of refunds for a given order id
 *OrderApi* | [**retrieveOrder**](docs/Api/OrderApi.md#retrieveorder) | **GET** /v1/orders/{OrderId} | Retrieve an Order.
+*RatesApi* | [**getRate**](docs/Api/RatesApi.md#getrate) | **GET** /v2.21/getRate | Fetches information about a single rate offer. This will return information about the rate offer so long as it exists, even if it has expired.
+*RatesApi* | [**getRates**](docs/Api/RatesApi.md#getrates) | **GET** /v2.21/getRates | Fetches the list of current foreign exchange rate offers that are available to the merchant.
 *SessionApi* | [**cancelSession**](docs/Api/SessionApi.md#cancelsession) | **DELETE** /v1/session/{SessionId}/cancel | Cancel a non-final Session
 *SessionApi* | [**createSession**](docs/Api/SessionApi.md#createsession) | **POST** /v1/session | Create a new Session
 *SessionApi* | [**retrieveSession**](docs/Api/SessionApi.md#retrievesession) | **GET** /v1/session/{SessionId} | Retrieve a Session
@@ -108,6 +110,8 @@ Class | Method | HTTP request | Description
 - [Order](docs/Model/Order.md)
 - [Payment](docs/Model/Payment.md)
 - [Paypal](docs/Model/Paypal.md)
+- [RateOffer](docs/Model/RateOffer.md)
+- [RateOffers](docs/Model/RateOffers.md)
 - [Refund](docs/Model/Refund.md)
 - [Session](docs/Model/Session.md)
 - [ShippingDetails](docs/Model/ShippingDetails.md)
