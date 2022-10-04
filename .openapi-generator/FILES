@@ -5,6 +5,7 @@
 README.md
 composer.json
 docs/Api/OrderApi.md
+docs/Api/RatesApi.md
 docs/Api/SessionApi.md
 docs/Model/Action.md
 docs/Model/Address.md
@@ -23,12 +24,15 @@ docs/Model/Online.md
 docs/Model/Order.md
 docs/Model/Payment.md
 docs/Model/Paypal.md
+docs/Model/RateOffer.md
+docs/Model/RateOffers.md
 docs/Model/Refund.md
 docs/Model/Session.md
 docs/Model/ShippingDetails.md
 docs/Model/Times.md
 git_push.sh
 lib/Api/OrderApi.php
+lib/Api/RatesApi.php
 lib/Api/SessionApi.php
 lib/ApiException.php
 lib/Configuration.php
@@ -51,6 +55,8 @@ lib/Model/Online.php
 lib/Model/Order.php
 lib/Model/Payment.php
 lib/Model/Paypal.php
+lib/Model/RateOffer.php
+lib/Model/RateOffers.php
 lib/Model/Refund.php
 lib/Model/Session.php
 lib/Model/ShippingDetails.php
@@ -58,6 +64,7 @@ lib/Model/Times.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/OrderApiTest.php
+test/Api/RatesApiTest.php
 test/Api/SessionApiTest.php
 test/Model/ActionTest.php
 test/Model/AddressTest.php
@@ -76,6 +83,8 @@ test/Model/OnlineTest.php
 test/Model/OrderTest.php
 test/Model/PaymentTest.php
 test/Model/PaypalTest.php
+test/Model/RateOfferTest.php
+test/Model/RateOffersTest.php
 test/Model/RefundTest.php
 test/Model/SessionTest.php
 test/Model/ShippingDetailsTest.php
