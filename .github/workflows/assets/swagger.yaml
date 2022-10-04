@@ -2772,7 +2772,7 @@ components:
       type: object
       example: '{"Custom field": "Any value"}'
     RateOffers:
-      description: Response object for get Rates.
+      description: Response object for getRates request.
       type: object
       properties:
         RateOffers:
