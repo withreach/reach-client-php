@@ -11,6 +11,8 @@ tags:
     description: Manage a Session within Reach.
   - name: Order
     description: Manage a Order within Reach.
+  - name: Rates
+    description: Retrieve rates from within Reach.
 paths:
   /v1/session:
     post:
@@ -2064,6 +2066,76 @@ paths:
               example:
                 Code: INTERNAL_SERVER_ERROR
                 Message: Refund failed due to an unexpected error
+  /v2.21/getRates:
+    get:
+      tags:
+        - Rates
+      summary: Fetches the list of current foreign exchange rate offers that are available to the merchant.
+      operationId: getRates
+      parameters:
+        - in: query
+          name: MerchantId
+          schema:
+            type: string
+            format: uuid
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            minLength: 36
+            maxLength: 36
+          required: true
+          description: The 36 character UUID which identifies the merchant to the Reach system.
+      responses:
+        '200':
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateOffers'
+        '400':
+          description: If present, the getRate request structure was invalid and unable to be parsed.
+        '404':
+          description: If present, a value of the request was unable to be found. For example, if the MerchantId provided could not be found in the given environment
+        '503':
+          description: There was a system problem and the request should be tried again.
+  /v2.21/getRate:
+    get:
+      tags:
+        - Rates
+      summary: Fetches information about a single rate offer. This will return information about the rate offer so long as it exists, even if it has expired.
+      operationId: getRate
+      parameters:
+        - in: query
+          name: MerchantId
+          schema:
+            type: string
+            format: uuid
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            minLength: 36
+            maxLength: 36
+          required: true
+          description: The 36 character UUID which identifies the merchant to the Reach system.
+        - in: query
+          name: RateOfferId
+          schema:
+            type: string
+            format: uuid
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            minLength: 36
+            maxLength: 36
+          required: true
+          description: A Reach rate offer ID for the merchant.
+      responses:
+        '200':
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateOffer'
+        '400':
+          description: If present, the getRate request structure was invalid and unable to be parsed.
+        '404':
+          description: If present, a value of the request was unable to be found. For example, if the MerchantId provided could not be found in the given environment
+        '503':
+          description: There was a system problem and the request should be tried again.
 components:
   schemas:
     Session:
@@ -2699,6 +2771,31 @@ components:
       description: Any optional metadata to be included. Can be a simple reference ID or some complex object containing multiple values, as long as it is valid JSON.
       type: object
       example: '{"Custom field": "Any value"}'
+    RateOffers:
+      description: Response object for get Rates.
+      type: object
+      properties:
+        RateOffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateOffer'
+    RateOffer:
+      type: object
+      properties:
+        Id:
+          description: A Reach rate offer ID for the merchant that can be used until the specified Expiry.
+          type: string
+        Currency:
+          description: The upper-case 3 character ISO 4217 currency code for this rate offer.
+          type: string
+          minLength: 3
+          maxLength: 3
+        Expiry:
+          description: The RFC 3339 timestamp at which this rate offer expires.
+          type: string
+        Rate:
+          description: The Reach guaranteed exchange rate.
+          type: number
   securitySchemes:
     basicAuth:
       type: http

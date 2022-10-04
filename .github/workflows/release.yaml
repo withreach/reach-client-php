@@ -2,8 +2,11 @@ concurrency:
   group: release
   cancel-in-progress: true
 on:
-  pull_request:
-    types: ["closed"]
+  push:
+    branches: [ main ]
+    paths:
+      - lib/**
+      - docs/**
 
 jobs:
   tag:
