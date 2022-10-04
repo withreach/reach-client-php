@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '5 4 * * SUN'
+  push:
+    branches: [ main ]
+    paths:
+      - ./.github/workflows/assets/swagger.yaml
 
 env:
   SWAGGER_URL: ./.github/workflows/assets/swagger.yaml
