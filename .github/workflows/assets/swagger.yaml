@@ -2232,6 +2232,14 @@ components:
           maxLength: 36
         Meta:
           $ref: '#/components/schemas/Meta'
+        PaymentDate:
+          description: "Date of /payment call against the session. Only present for completed sessions."
+          type: string
+          readOnly: true
+        PaymentMethod:
+          description: "Method used as part of a /payment call against the session. Only present for completed sessions."
+          type: string
+          readOnly: true
       required:
         - MerchantReference
         - Currency
