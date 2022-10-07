@@ -75,7 +75,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => '\OpenAPI\Client\Model\Order',
         'discounts' => '\OpenAPI\Client\Model\Discount[]',
         'rate_offer_id' => 'string',
-        'meta' => 'object'
+        'meta' => 'object',
+        'payment_date' => 'string',
+        'payment_method' => 'string'
     ];
 
     /**
@@ -104,7 +106,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => null,
         'discounts' => null,
         'rate_offer_id' => 'uuid',
-        'meta' => null
+        'meta' => null,
+        'payment_date' => null,
+        'payment_method' => null
     ];
 
     /**
@@ -152,7 +156,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => 'Order',
         'discounts' => 'Discounts',
         'rate_offer_id' => 'RateOfferId',
-        'meta' => 'Meta'
+        'meta' => 'Meta',
+        'payment_date' => 'PaymentDate',
+        'payment_method' => 'PaymentMethod'
     ];
 
     /**
@@ -179,7 +185,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => 'setOrder',
         'discounts' => 'setDiscounts',
         'rate_offer_id' => 'setRateOfferId',
-        'meta' => 'setMeta'
+        'meta' => 'setMeta',
+        'payment_date' => 'setPaymentDate',
+        'payment_method' => 'setPaymentMethod'
     ];
 
     /**
@@ -206,7 +214,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => 'getOrder',
         'discounts' => 'getDiscounts',
         'rate_offer_id' => 'getRateOfferId',
-        'meta' => 'getMeta'
+        'meta' => 'getMeta',
+        'payment_date' => 'getPaymentDate',
+        'payment_method' => 'getPaymentMethod'
     ];
 
     /**
@@ -306,6 +316,8 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['discounts'] = $data['discounts'] ?? null;
         $this->container['rate_offer_id'] = $data['rate_offer_id'] ?? null;
         $this->container['meta'] = $data['meta'] ?? null;
+        $this->container['payment_date'] = $data['payment_date'] ?? null;
+        $this->container['payment_method'] = $data['payment_method'] ?? null;
     }
 
     /**
@@ -938,6 +950,54 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMeta($meta)
     {
         $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_date
+     *
+     * @return string|null
+     */
+    public function getPaymentDate()
+    {
+        return $this->container['payment_date'];
+    }
+
+    /**
+     * Sets payment_date
+     *
+     * @param string|null $payment_date Date of /payment call against the session. Only present for completed sessions.
+     *
+     * @return self
+     */
+    public function setPaymentDate($payment_date)
+    {
+        $this->container['payment_date'] = $payment_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method
+     *
+     * @return string|null
+     */
+    public function getPaymentMethod()
+    {
+        return $this->container['payment_method'];
+    }
+
+    /**
+     * Sets payment_method
+     *
+     * @param string|null $payment_method Method used as part of a /payment call against the session. Only present for completed sessions.
+     *
+     * @return self
+     */
+    public function setPaymentMethod($payment_method)
+    {
+        $this->container['payment_method'] = $payment_method;
 
         return $this;
     }

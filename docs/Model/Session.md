@@ -23,5 +23,7 @@ Name | Type | Description | Notes
 **discounts** | [**\OpenAPI\Client\Model\Discount[]**](Discount.md) |  | [optional]
 **rate_offer_id** | **string** | The 36 character GUID for a guaranteed foreign exchange rate. If omitted, the rate will be determined at the time of settlement. | [optional]
 **meta** | **object** | Any optional metadata to be included. Can be a simple reference ID or some complex object containing multiple values, as long as it is valid JSON. | [optional]
+**payment_date** | **string** | Date of /payment call against the session. Only present for completed sessions. | [optional] [readonly]
+**payment_method** | **string** | Method used as part of a /payment call against the session. Only present for completed sessions. | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
