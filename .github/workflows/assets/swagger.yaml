@@ -145,6 +145,7 @@ paths:
                   Meta:
                     TxnId: 1234567
                     InternalRefId: uuid-1234-abcd
+                  AllowContract: true
               BillingProfileReference:
                 summary: A request using a BillingProfileReference
                 value:
@@ -227,6 +228,7 @@ paths:
                 Discounts:
                   - Name: Discount descriptor
                     Amount: 4.56
+                AllowContract: true
         '400':
           description: Invalid request
           content:
@@ -371,6 +373,7 @@ paths:
                     CompleteUrl: https://example.org/return/f04c2d83-11fa-405b-b6c3-c74559fd8e61
                     CancelUrl: https://example.org/return/f04c2d83-11fa-405b-b6c3-c74559fd8e61
                     ViaAgent: false
+                    AllowContract: true
                 PROCESSING:
                   value:
                     SessionId: f04c2d83-11fa-405b-b6c3-c74559fd8e61
@@ -673,6 +676,7 @@ paths:
               Discounts:
                 - Name: Discount descriptor
                   Amount: 4.56
+              AllowContract: true
         required: true
       responses:
         '200':
@@ -729,6 +733,7 @@ paths:
                 Discounts:
                   - Name: Discount descriptor
                     Amount: 4.56
+                AllowContract: true
         '400':
           description: Bad request
           content:
@@ -2240,6 +2245,9 @@ components:
           description: "Method used as part of a /payment call against the session. Only present for completed sessions."
           type: string
           readOnly: true
+        AllowContract:
+          description: Overrides the merchant AllowContract setting to permit users creation of a contract (used for recurring billing, subscriptions, stored payment options, etc.) when submitting their payment.
+          type: boolean
       required:
         - MerchantReference
         - Currency
