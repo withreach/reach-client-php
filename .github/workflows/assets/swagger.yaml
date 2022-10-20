@@ -146,6 +146,7 @@ paths:
                     TxnId: 1234567
                     InternalRefId: uuid-1234-abcd
                   AllowContract: true
+                  OpenContract: false
               BillingProfileReference:
                 summary: A request using a BillingProfileReference
                 value:
@@ -229,6 +230,7 @@ paths:
                   - Name: Discount descriptor
                     Amount: 4.56
                 AllowContract: true
+                OpenContract: false
         '400':
           description: Invalid request
           content:
@@ -374,6 +376,7 @@ paths:
                     CancelUrl: https://example.org/return/f04c2d83-11fa-405b-b6c3-c74559fd8e61
                     ViaAgent: false
                     AllowContract: true
+                    OpenContract: false
                 PROCESSING:
                   value:
                     SessionId: f04c2d83-11fa-405b-b6c3-c74559fd8e61
@@ -677,6 +680,7 @@ paths:
                 - Name: Discount descriptor
                   Amount: 4.56
               AllowContract: true
+              OpenContract: false
         required: true
       responses:
         '200':
@@ -734,6 +738,7 @@ paths:
                   - Name: Discount descriptor
                     Amount: 4.56
                 AllowContract: true
+                OpenContract: false
         '400':
           description: Bad request
           content:
@@ -2247,6 +2252,9 @@ components:
           readOnly: true
         AllowContract:
           description: Overrides the merchant AllowContract setting to permit users creation of a contract (used for recurring billing, subscriptions, stored payment options, etc.) when submitting their payment.
+          type: boolean
+        OpenContract:
+          description: Flag to tell that the payment is to be used to start a subscription and if successful will automatically create a contract.
           type: boolean
       required:
         - MerchantReference
