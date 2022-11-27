@@ -77,7 +77,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'rate_offer_id' => 'string',
         'meta' => 'object',
         'payment_date' => 'string',
-        'payment_method' => 'string'
+        'payment_method' => 'string',
+        'allow_contract' => 'bool',
+        'open_contract' => 'bool'
     ];
 
     /**
@@ -108,7 +110,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'rate_offer_id' => 'uuid',
         'meta' => null,
         'payment_date' => null,
-        'payment_method' => null
+        'payment_method' => null,
+        'allow_contract' => null,
+        'open_contract' => null
     ];
 
     /**
@@ -158,7 +162,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'rate_offer_id' => 'RateOfferId',
         'meta' => 'Meta',
         'payment_date' => 'PaymentDate',
-        'payment_method' => 'PaymentMethod'
+        'payment_method' => 'PaymentMethod',
+        'allow_contract' => 'AllowContract',
+        'open_contract' => 'OpenContract'
     ];
 
     /**
@@ -187,7 +193,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'rate_offer_id' => 'setRateOfferId',
         'meta' => 'setMeta',
         'payment_date' => 'setPaymentDate',
-        'payment_method' => 'setPaymentMethod'
+        'payment_method' => 'setPaymentMethod',
+        'allow_contract' => 'setAllowContract',
+        'open_contract' => 'setOpenContract'
     ];
 
     /**
@@ -216,7 +224,9 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         'rate_offer_id' => 'getRateOfferId',
         'meta' => 'getMeta',
         'payment_date' => 'getPaymentDate',
-        'payment_method' => 'getPaymentMethod'
+        'payment_method' => 'getPaymentMethod',
+        'allow_contract' => 'getAllowContract',
+        'open_contract' => 'getOpenContract'
     ];
 
     /**
@@ -318,6 +328,8 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['meta'] = $data['meta'] ?? null;
         $this->container['payment_date'] = $data['payment_date'] ?? null;
         $this->container['payment_method'] = $data['payment_method'] ?? null;
+        $this->container['allow_contract'] = $data['allow_contract'] ?? null;
+        $this->container['open_contract'] = $data['open_contract'] ?? null;
     }
 
     /**
@@ -998,6 +1010,54 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentMethod($payment_method)
     {
         $this->container['payment_method'] = $payment_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_contract
+     *
+     * @return bool|null
+     */
+    public function getAllowContract()
+    {
+        return $this->container['allow_contract'];
+    }
+
+    /**
+     * Sets allow_contract
+     *
+     * @param bool|null $allow_contract Overrides the merchant AllowContract setting to permit users creation of a contract (used for recurring billing, subscriptions, stored payment options, etc.) when submitting their payment.
+     *
+     * @return self
+     */
+    public function setAllowContract($allow_contract)
+    {
+        $this->container['allow_contract'] = $allow_contract;
+
+        return $this;
+    }
+
+    /**
+     * Gets open_contract
+     *
+     * @return bool|null
+     */
+    public function getOpenContract()
+    {
+        return $this->container['open_contract'];
+    }
+
+    /**
+     * Sets open_contract
+     *
+     * @param bool|null $open_contract Flag to tell that the payment is to be used to start a subscription and if successful will automatically create a contract.
+     *
+     * @return self
+     */
+    public function setOpenContract($open_contract)
+    {
+        $this->container['open_contract'] = $open_contract;
 
         return $this;
     }
