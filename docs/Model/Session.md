@@ -25,5 +25,7 @@ Name | Type | Description | Notes
 **meta** | **object** | Any optional metadata to be included. Can be a simple reference ID or some complex object containing multiple values, as long as it is valid JSON. | [optional]
 **payment_date** | **string** | Date of /payment call against the session. Only present for completed sessions. | [optional] [readonly]
 **payment_method** | **string** | Method used as part of a /payment call against the session. Only present for completed sessions. | [optional] [readonly]
+**allow_contract** | **bool** | Overrides the merchant AllowContract setting to permit users creation of a contract (used for recurring billing, subscriptions, stored payment options, etc.) when submitting their payment. | [optional]
+**open_contract** | **bool** | Flag to tell that the payment is to be used to start a subscription and if successful will automatically create a contract. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
