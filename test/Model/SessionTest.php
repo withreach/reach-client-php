@@ -267,4 +267,22 @@ class SessionTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "allow_contract"
+     */
+    public function testPropertyAllowContract()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "open_contract"
+     */
+    public function testPropertyOpenContract()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }
